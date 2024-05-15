@@ -1,0 +1,8 @@
+// TESTNO
+    ./gradlew bootRun 
+
+// PRODUKCIJA
+    ./gradlew build
+    ILI
+    ./gradlew clean build
+    java -jar KuhajItAPI-...-SNAPSHOT (nalazi se u build/libs)

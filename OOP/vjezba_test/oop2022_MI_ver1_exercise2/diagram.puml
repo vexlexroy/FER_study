@@ -1,0 +1,13 @@
+@startuml
+abstract class hr.fer.oop.Agent
+class hr.fer.oop.IntelligentAgent
+class hr.fer.oop.Main
+class hr.fer.oop.MobileAgent
+class hr.fer.oop.MultiAgentSystem
+class java.util.Random
+enum hr.fer.oop.IntelligentAgentType
+interface hr.fer.oop.Movable
+hr.fer.oop.IntelligentAgent --|> hr.fer.oop.Agent
+hr.fer.oop.MobileAgent --|> hr.fer.oop.Agent
+hr.fer.oop.MobileAgent --|> hr.fer.oop.Movable
+@enduml

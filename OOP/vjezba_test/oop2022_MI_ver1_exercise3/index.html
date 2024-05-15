@@ -1,0 +1,348 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+   <meta charset="UTF-8">
+  <link href="res/prism.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+    }
+    code {
+      font-size: 16px;
+      font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    }
+  </style>
+</head>
+<body>
+<h1>3. zadatak (6 bodova)</h1>
+<p>Klase <code>MyList&lt;E&gt;</code>, <code>MyListElement&lt;E&gt;</code>, <code>Media</code>, <code>Video</code>, <code>Audio</code>, <code>Podcast</code> i <code>Song</code> zadane su kao na UML dijagramu.</p>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="562px" preserveAspectRatio="none" style="width:1568px;height:562px;background:#FFFFFF;" version="1.1" viewBox="0 0 1568 562" width="1568px" zoomAndPan="magnify">
+<defs/>
+<g>
+<!--MD5=[166247bf81aba95c770c3b8fd8e3cb19]
+class Video-->
+<a href="java:hr.fer.oop.zad3.Video" target="_top" title="java:hr.fer.oop.zad3.Video" xlink:actuate="onRequest" xlink:href="java:hr.fer.oop.zad3.Video" xlink:show="new" xlink:title="java:hr.fer.oop.zad3.Video" xlink:type="simple">
+<g id="elem_Video">
+<rect codeLine="1" fill="#F1F1F1" height="163.418" id="Video" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="607" x="306.5" y="234"/>
+<ellipse cx="586.25" cy="250" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+<path d="M588.7231,256.1431 Q588.1421,256.4419 587.5029,256.5913 Q586.8638,256.7407 586.1582,256.7407 Q583.6514,256.7407 582.3315,255.0889 Q581.0117,253.437 581.0117,250.3159 Q581.0117,247.1865 582.3315,245.5347 Q583.6514,243.8828 586.1582,243.8828 Q586.8638,243.8828 587.5112,244.0322 Q588.1587,244.1816 588.7231,244.4805 L588.7231,247.2031 Q588.0923,246.6221 587.4988,246.3523 Q586.9053,246.0825 586.2744,246.0825 Q584.9297,246.0825 584.2449,247.1492 Q583.5601,248.2158 583.5601,250.3159 Q583.5601,252.4077 584.2449,253.4744 Q584.9297,254.541 586.2744,254.541 Q586.9053,254.541 587.4988,254.2712 Q588.0923,254.0015 588.7231,253.4204 Z " fill="#000000"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="39" x="606.75" y="255.291">Video</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="307.5" x2="912.5" y1="266" y2="266"/>
+<rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="314.5" y="276.7441"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="129" x="326.5" y="283.5352">videoCodec: String</text>
+<rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="314.5" y="293.2324"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="131" x="326.5" y="300.0234">audioCodec: String</text>
+<rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="314.5" y="309.7207"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="326.5" y="316.5117">format: String</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="307.5" x2="912.5" y1="323.4648" y2="323.4648"/>
+<ellipse cx="317.5" cy="337.209" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="581" x="326.5" y="341">Video(title: String, length: int, videoCodec: String, audioCodec: String, format: String)</text>
+<ellipse cx="317.5" cy="353.6973" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="163" x="326.5" y="357.4883">getVideoCodec(): String</text>
+<ellipse cx="317.5" cy="370.1855" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="165" x="326.5" y="373.9766">getAudioCodec(): String</text>
+<ellipse cx="317.5" cy="386.6738" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130" x="326.5" y="390.4648">getFormat(): String</text>
+</g>
+</a>
+<!--MD5=[4e8cc7bbb60dc5d148cf8b942067baf3]
+class Audio-->
+<a href="java:hr.fer.oop.zad3.Audio" target="_top" title="java:hr.fer.oop.zad3.Audio" xlink:actuate="onRequest" xlink:href="java:hr.fer.oop.zad3.Audio" xlink:show="new" xlink:title="java:hr.fer.oop.zad3.Audio" xlink:type="simple">
+<g id="elem_Audio">
+<rect codeLine="10" fill="#F1F1F1" height="97.4648" id="Audio" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="327" x="948.5" y="267"/>
+<ellipse cx="1087.25" cy="283" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+<path d="M1089.7231,289.1431 Q1089.1421,289.4419 1088.5029,289.5913 Q1087.8638,289.7407 1087.1582,289.7407 Q1084.6514,289.7407 1083.3315,288.0889 Q1082.0117,286.437 1082.0117,283.3159 Q1082.0117,280.1865 1083.3315,278.5347 Q1084.6514,276.8828 1087.1582,276.8828 Q1087.8638,276.8828 1088.5112,277.0322 Q1089.1587,277.1816 1089.7231,277.4805 L1089.7231,280.2031 Q1089.0923,279.6221 1088.4988,279.3523 Q1087.9053,279.0825 1087.2744,279.0825 Q1085.9297,279.0825 1085.2449,280.1492 Q1084.5601,281.2158 1084.5601,283.3159 Q1084.5601,285.4077 1085.2449,286.4744 Q1085.9297,287.541 1087.2744,287.541 Q1087.9053,287.541 1088.4988,287.2712 Q1089.0923,287.0015 1089.7231,286.4204 Z " fill="#000000"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="41" x="1107.75" y="288.291">Audio</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="949.5" x2="1274.5" y1="299" y2="299"/>
+<rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="956.5" y="309.7441"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="968.5" y="316.5352">codec: String</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="949.5" x2="1274.5" y1="323.4883" y2="323.4883"/>
+<ellipse cx="959.5" cy="337.2324" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="301" x="968.5" y="341.0234">Audio(title: String, length: int, codec: String)</text>
+<ellipse cx="959.5" cy="353.7207" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="124" x="968.5" y="357.5117">getCodec(): String</text>
+</g>
+</a>
+<!--MD5=[562c4b801d528848837ef3b38203ac7d]
+class Song-->
+<a href="java:hr.fer.oop.zad3.Song" target="_top" title="java:hr.fer.oop.zad3.Song" xlink:actuate="onRequest" xlink:href="java:hr.fer.oop.zad3.Song" xlink:show="new" xlink:title="java:hr.fer.oop.zad3.Song" xlink:type="simple">
+<g id="elem_Song">
+<rect codeLine="15" fill="#F1F1F1" height="97.4648" id="Song" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="424" x="668" y="458"/>
+<ellipse cx="858.25" cy="474" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+<path d="M860.7231,480.1431 Q860.1421,480.4419 859.5029,480.5913 Q858.8638,480.7407 858.1582,480.7407 Q855.6514,480.7407 854.3315,479.0889 Q853.0117,477.437 853.0117,474.3159 Q853.0117,471.1865 854.3315,469.5347 Q855.6514,467.8828 858.1582,467.8828 Q858.8638,467.8828 859.5112,468.0322 Q860.1587,468.1816 860.7231,468.4805 L860.7231,471.2031 Q860.0923,470.6221 859.4988,470.3523 Q858.9053,470.0825 858.2744,470.0825 Q856.9297,470.0825 856.2449,471.1492 Q855.5601,472.2158 855.5601,474.3159 Q855.5601,476.4077 856.2449,477.4744 Q856.9297,478.541 858.2744,478.541 Q858.9053,478.541 859.4988,478.2712 Q860.0923,478.0015 860.7231,477.4204 Z " fill="#000000"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="35" x="878.75" y="479.291">Song</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="669" x2="1091" y1="490" y2="490"/>
+<rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="676" y="500.7441"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="688" y="507.5352">author: String</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="669" x2="1091" y1="514.4883" y2="514.4883"/>
+<ellipse cx="679" cy="528.2324" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="398" x="688" y="532.0234">Song(title: String, length: int, codec: String, author: String)</text>
+<ellipse cx="679" cy="544.7207" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="129" x="688" y="548.5117">getAuthor(): String</text>
+</g>
+</a>
+<!--MD5=[148499297b6f36812855c8d7dd33a717]
+class Podcast-->
+<a href="java:hr.fer.oop.zad3.Podcast" target="_top" title="java:hr.fer.oop.zad3.Podcast" xlink:actuate="onRequest" xlink:href="java:hr.fer.oop.zad3.Podcast" xlink:show="new" xlink:title="java:hr.fer.oop.zad3.Podcast" xlink:type="simple">
+<g id="elem_Podcast">
+<rect codeLine="20" fill="#F1F1F1" height="97.4648" id="Podcast" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="434" x="1127" y="458"/>
+<ellipse cx="1313.25" cy="474" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+<path d="M1315.7231,480.1431 Q1315.1421,480.4419 1314.5029,480.5913 Q1313.8638,480.7407 1313.1582,480.7407 Q1310.6514,480.7407 1309.3315,479.0889 Q1308.0117,477.437 1308.0117,474.3159 Q1308.0117,471.1865 1309.3315,469.5347 Q1310.6514,467.8828 1313.1582,467.8828 Q1313.8638,467.8828 1314.5112,468.0322 Q1315.1587,468.1816 1315.7231,468.4805 L1315.7231,471.2031 Q1315.0923,470.6221 1314.4988,470.3523 Q1313.9053,470.0825 1313.2744,470.0825 Q1311.9297,470.0825 1311.2449,471.1492 Q1310.5601,472.2158 1310.5601,474.3159 Q1310.5601,476.4077 1311.2449,477.4744 Q1311.9297,478.541 1313.2744,478.541 Q1313.9053,478.541 1314.4988,478.2712 Q1315.0923,478.0015 1315.7231,477.4204 Z " fill="#000000"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="53" x="1333.75" y="479.291">Podcast</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="1128" x2="1560" y1="490" y2="490"/>
+<rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="1135" y="500.7441"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87" x="1147" y="507.5352">guest: String</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="1128" x2="1560" y1="514.4883" y2="514.4883"/>
+<ellipse cx="1138" cy="528.2324" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="408" x="1147" y="532.0234">Podcast(title: String, length: int, codec: String, guest: String)</text>
+<ellipse cx="1138" cy="544.7207" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120" x="1147" y="548.5117">getGuest(): String</text>
+</g>
+</a>
+<!--MD5=[9d93cc8568a88ed605ddd50c0dd874e2]
+class Media-->
+<a href="java:hr.fer.oop.zad3.Media" target="_top" title="java:hr.fer.oop.zad3.Media" xlink:actuate="onRequest" xlink:href="java:hr.fer.oop.zad3.Media" xlink:show="new" xlink:title="java:hr.fer.oop.zad3.Media" xlink:type="simple">
+<g id="elem_Media">
+<rect codeLine="25" fill="#F1F1F1" height="130.4414" id="Media" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="230" x="630" y="26.5"/>
+<ellipse cx="720.25" cy="42.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+<path d="M722.7231,48.6431 Q722.1421,48.9419 721.5029,49.0913 Q720.8638,49.2407 720.1582,49.2407 Q717.6514,49.2407 716.3315,47.5889 Q715.0117,45.937 715.0117,42.8159 Q715.0117,39.6865 716.3315,38.0347 Q717.6514,36.3828 720.1582,36.3828 Q720.8638,36.3828 721.5112,36.5322 Q722.1587,36.6816 722.7231,36.9805 L722.7231,39.7031 Q722.0923,39.1221 721.4988,38.8523 Q720.9053,38.5825 720.2744,38.5825 Q718.9297,38.5825 718.2449,39.6492 Q717.5601,40.7158 717.5601,42.8159 Q717.5601,44.9077 718.2449,45.9744 Q718.9297,47.041 720.2744,47.041 Q720.9053,47.041 721.4988,46.7712 Q722.0923,46.5015 722.7231,45.9204 Z " fill="#000000"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="41" x="740.75" y="47.791">Media</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="631" x2="859" y1="58.5" y2="58.5"/>
+<rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="638" y="69.2441"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="75" x="650" y="76.0352">title: String</text>
+<rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="638" y="85.7324"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="650" y="92.5234">length: int</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="631" x2="859" y1="99.4766" y2="99.4766"/>
+<ellipse cx="641" cy="113.2207" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="204" x="650" y="117.0117">Media(title: String, length: int)</text>
+<ellipse cx="641" cy="129.709" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111" x="650" y="133.5">getTitle(): String</text>
+<ellipse cx="641" cy="146.1973" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="105" x="650" y="149.9883">getLength(): int</text>
+</g>
+</a>
+<!--MD5=[77bea62f38bbc09c1f2d74714c3d854d]
+class MyList_E_-->
+<a href="java:hr.fer.oop.zad3.MyList" target="_top" title="java:hr.fer.oop.zad3.MyList" xlink:actuate="onRequest" xlink:href="java:hr.fer.oop.zad3.MyList" xlink:show="new" xlink:title="java:hr.fer.oop.zad3.MyList" xlink:type="simple">
+<g id="elem_MyList_E_">
+<rect codeLine="33" fill="#F1F1F1" height="113.9531" id="MyList_E_" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="204" x="7" y="34.5"/>
+<ellipse cx="78.25" cy="50.5" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+<path d="M80.7231,56.6431 Q80.1421,56.9419 79.5029,57.0913 Q78.8638,57.2407 78.1582,57.2407 Q75.6514,57.2407 74.3315,55.5889 Q73.0117,53.937 73.0117,50.8159 Q73.0117,47.6865 74.3315,46.0347 Q75.6514,44.3828 78.1582,44.3828 Q78.8638,44.3828 79.5112,44.5322 Q80.1587,44.6816 80.7231,44.9805 L80.7231,47.7031 Q80.0923,47.1221 79.4988,46.8523 Q78.9053,46.5825 78.2744,46.5825 Q76.9297,46.5825 76.2449,47.6492 Q75.5601,48.7158 75.5601,50.8159 Q75.5601,52.9077 76.2449,53.9744 Q76.9297,55.041 78.2744,55.041 Q78.9053,55.041 79.4988,54.7712 Q80.0923,54.5015 80.7231,53.9204 Z " fill="#000000"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="42" x="98.75" y="55.791">MyList</text>
+<rect fill="#FFFFFF" height="16.1328" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" width="9" x="205" y="31.5"/>
+<text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="7" x="206" y="44.1016">E</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="210" y1="66.5" y2="66.5"/>
+<line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="210" y1="74.5" y2="74.5"/>
+<ellipse cx="18" cy="88.2441" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="114" x="27" y="92.0352">addLast(o: E): int</text>
+<ellipse cx="18" cy="104.7324" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="178" x="27" y="108.5234">removeAt(index: int): void</text>
+<ellipse cx="18" cy="121.2207" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="161" x="27" y="125.0117">elementAt(index: int): E</text>
+<ellipse cx="18" cy="137.709" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="63" x="27" y="141.5">size(): int</text>
+</g>
+</a>
+<!--MD5=[cfc558d5dda5e5162f9f23e3e041284c]
+class MyListElement_E_-->
+<a href="java:hr.fer.oop.zad3.MyListElement" target="_top" title="java:hr.fer.oop.zad3.MyListElement" xlink:actuate="onRequest" xlink:href="java:hr.fer.oop.zad3.MyListElement" xlink:show="new" xlink:title="java:hr.fer.oop.zad3.MyListElement" xlink:type="simple">
+<g id="elem_MyListElement_E_">
+<rect codeLine="39" fill="#F1F1F1" height="163.418" id="MyListElement_E_" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="291" x="303.5" y="10"/>
+<ellipse cx="390.75" cy="26" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+<path d="M393.2231,32.1431 Q392.6421,32.4419 392.0029,32.5913 Q391.3638,32.7407 390.6582,32.7407 Q388.1514,32.7407 386.8315,31.0889 Q385.5117,29.437 385.5117,26.3159 Q385.5117,23.1865 386.8315,21.5347 Q388.1514,19.8828 390.6582,19.8828 Q391.3638,19.8828 392.0112,20.0322 Q392.6587,20.1816 393.2231,20.4805 L393.2231,23.2031 Q392.5923,22.6221 391.9988,22.3523 Q391.4053,22.0825 390.7744,22.0825 Q389.4297,22.0825 388.7449,23.1492 Q388.0601,24.2158 388.0601,26.3159 Q388.0601,28.4077 388.7449,29.4744 Q389.4297,30.541 390.7744,30.541 Q391.4053,30.541 391.9988,30.2712 Q392.5923,30.0015 393.2231,29.4204 Z " fill="#000000"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="97" x="411.25" y="31.291">MyListElement</text>
+<rect fill="#FFFFFF" height="16.1328" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" width="9" x="588.5" y="7"/>
+<text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="7" x="589.5" y="19.6016">E</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="304.5" x2="593.5" y1="42" y2="42"/>
+<rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="311.5" y="52.7441"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="68" x="323.5" y="59.5352">content: E</text>
+<rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="311.5" y="69.2324"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="166" x="323.5" y="76.0234">next: MyListElement&lt;E&gt;</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="304.5" x2="593.5" y1="82.9766" y2="82.9766"/>
+<ellipse cx="314.5" cy="96.7207" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="175" x="323.5" y="100.5117">MyListElement(content: E)</text>
+<ellipse cx="314.5" cy="113.209" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="103" x="323.5" y="117">getContent(): E</text>
+<ellipse cx="314.5" cy="129.6973" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="190" x="323.5" y="133.4883">setContent(content: E): void</text>
+<ellipse cx="314.5" cy="146.1855" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="199" x="323.5" y="149.9766">getNext(): MyListElement&lt;E&gt;</text>
+<ellipse cx="314.5" cy="162.6738" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="265" x="323.5" y="166.4648">setNext(next: MyListElement&lt;E&gt;): void</text>
+</g>
+</a>
+<!--MD5=[46facb2c12fed10827aedf45a070bcb0]
+reverse link Media to Video-->
+<g id="link_Media_Video">
+<path codeLine="50" d="M695.53,173.86 C683.63,193.42 670.93,214.3 659.05,233.83 " fill="none" id="Media-backto-Video" style="stroke:#181818;stroke-width:1.0;"/>
+<polygon fill="none" points="689.58,170.16,705.95,156.71,701.54,177.44,689.58,170.16" style="stroke:#181818;stroke-width:1.0;"/>
+</g>
+<!--MD5=[ff66742366083d325c0e1b1d07cdda4f]
+reverse link Media to Audio-->
+<g id="link_Media_Audio">
+<path codeLine="51" d="M868.51,167.21 C922.92,200.12 985.23,237.82 1033.2,266.83 " fill="none" id="Media-backto-Audio" style="stroke:#181818;stroke-width:1.0;"/>
+<polygon fill="none" points="864.64,173.05,851.15,156.71,871.89,161.07,864.64,173.05" style="stroke:#181818;stroke-width:1.0;"/>
+</g>
+<!--MD5=[717f11eaf9988de8390586b4fc5a6588]
+reverse link Audio to Song-->
+<g id="link_Audio_Song">
+<path codeLine="52" d="M1037.67,377.05 C1005.59,403.19 968.61,433.31 938.52,457.82 " fill="none" id="Audio-backto-Song" style="stroke:#181818;stroke-width:1.0;"/>
+<polygon fill="none" points="1033.53,371.4,1053.46,364.19,1042.37,382.25,1033.53,371.4" style="stroke:#181818;stroke-width:1.0;"/>
+</g>
+<!--MD5=[ab057b9ee46198200acad4fce40c9543]
+reverse link Audio to Podcast-->
+<g id="link_Audio_Podcast">
+<path codeLine="53" d="M1186.33,377.05 C1218.41,403.19 1255.39,433.31 1285.48,457.82 " fill="none" id="Audio-backto-Podcast" style="stroke:#181818;stroke-width:1.0;"/>
+<polygon fill="none" points="1181.63,382.25,1170.54,364.19,1190.47,371.4,1181.63,382.25" style="stroke:#181818;stroke-width:1.0;"/>
+</g>
+<!--MD5=[eb22432734ec4487d737d4a89f94c16d]
+link MyList_E_ to MyListElement_E_-->
+<g id="link_MyList_E__MyListElement_E_">
+<path codeLine="54" d="M211.01,91.5 C238.47,91.5 268.76,91.5 298.27,91.5 " fill="none" id="MyList_E_-to-MyListElement_E_" style="stroke:#181818;stroke-width:1.0;"/>
+<polygon fill="#181818" points="303.38,91.5,294.38,87.5,298.38,91.5,294.38,95.5,303.38,91.5" style="stroke:#181818;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="56" x="229.25" y="85.0684">              </text>
+<text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="20" x="266.4062" y="104.7998">0,1</text>
+<text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="38" x="257.4062" y="120.1104">-head</text>
+</g>
+<!--MD5=[9413485d495df0709c68deafe26abe0e]
+@startuml
+class Video [[java:hr.fer.oop.zad3.Video]] {
+	-videoCodec: String
+	-audioCodec: String
+	-format: String
+	+Video(title: String, length: int, videoCodec: String, audioCodec: String, format: String)
+	+getVideoCodec(): String
+	+getAudioCodec(): String
+	+getFormat(): String
+}
+class Audio [[java:hr.fer.oop.zad3.Audio]] {
+	-codec: String
+	+Audio(title: String, length: int, codec: String)
+	+getCodec(): String
+}
+class Song [[java:hr.fer.oop.zad3.Song]] {
+	-author: String
+	+Song(title: String, length: int, codec: String, author: String)
+	+getAuthor(): String
+}
+class Podcast [[java:hr.fer.oop.zad3.Podcast]] {
+	-guest: String
+	+Podcast(title: String, length: int, codec: String, guest: String)
+	+getGuest(): String
+}
+class Media [[java:hr.fer.oop.zad3.Media]] {
+	-title: String
+	-length: int
+	+Media(title: String, length: int)
+	+getTitle(): String
+	+getLength(): int
+}
+
+class "MyList<E>" as MyList_E_ [[java:hr.fer.oop.zad3.MyList]] {
+	+addLast(o: E): int
+	+removeAt(index: int): void
+	+elementAt(index: int): E
+	+size(): int
+}
+class "MyListElement<E>" as MyListElement_E_ [[java:hr.fer.oop.zad3.MyListElement]] {
+	-content: E
+	-next: MyListElement<E>
+	+MyListElement(content: E)
+	+getContent(): E
+	+setContent(content: E): void
+	+getNext(): MyListElement<E>
+	+setNext(next: MyListElement<E>): void
+}
+
+Media <|- - Video
+Media <|- - Audio
+Audio <|- - Song
+Audio <|- - Podcast
+MyList_E_ -> "0,1\n-head" MyListElement_E_ : "              "
+@enduml
+
+PlantUML version 1.2022.12(Sun Oct 23 20:12:26 CEST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: HR
+-->
+</g>
+</svg>
+<p>Legenda vidljivosti u dijagramu klasa:</p>
+<p><img src="res/vidljivost.png" alt="Legenda vidljivosti" /></p>
+<p><strong>Napomena:</strong> Sve klase i sučelja imaju vidljivost postavljenu na
+<em>public</em> i nalaze se u paketu <code>hr.fer.oop.zad3</code>.</p>
+<p>Napravite javno sučelje <code>Printable</code> koje ima jednu metodu <code>print</code> koja ne prima ništa, ali vraća <code>String</code> koji se može ispisati.</p>
+<p>Napravite apstraktnu klasu <code>PrintableList</code> koja nasljeđuje klasu <code>MyList</code> i implementira sučelje <code>Printable</code>.</p>
+<p>Napravite klasu <code>MediaPrinter</code> koja nasljeđuje klasu <code>PrintableList</code> i parametrizirana je tako da može sadržavati sve vrste medija. Metoda <code>print</code> vraća za svaki element jedan redak kako je u primjeru korištenja.</p>
+<p>Napraviti klasu <code>Printer</code>. U njoj je potrebno napraviti 3 javne statičke metode:</p>
+<ul>
+<li>metoda <code>printVideoList</code> koja vraća <code>String</code>, a prima listu <code>MyList</code> objekata iz klase <code>Video</code>. Metoda vraća po redak za svaki element liste. Format je u primjeru korištenja;</li>
+<li>metoda <code>printAudioList</code> vraća <code>String</code>, a prima listu <code>MyList</code> objekata iz klase <code>Audio</code>. Metoda vraća po jedan redak po elementu liste. Format je u primjeru korištenja;</li>
+</ul>
+<p>Primjer korištenja:</p>
+<pre class="line-numbers"><code class="language-java">Video video1 = new Video(&quot;Dune&quot;, 9300, &quot;H265&quot;, &quot;MP3&quot;, &quot;3840 x 2160&quot;);
+Video video2 = new Video(&quot;Don't Look Up&quot;, 8280, &quot;H264&quot;, &quot;AAC&quot;, &quot;1920 x 1080&quot;);
+Podcast podcast1 = new Podcast(&quot;Inside Java&quot;, 1800, &quot;MP3&quot;, &quot;none&quot;);
+Podcast podcast2 = new Podcast(&quot;Coding 101&quot;, 1200, &quot;AAC&quot;, &quot;none&quot;);
+Song song1 = new Song(&quot;Free software Song&quot;, 122, &quot;MP3&quot;, &quot;Richard Stallman&quot;);
+Song song2 = new Song(&quot;Java Life (Code Hard)&quot;, 192, &quot;AAC&quot;, &quot;Dev Crew&quot;);
+Song song3 = new Song(&quot;I Hate the DMCA&quot;, 203, &quot;AAC&quot;, &quot;Joe Wecker&quot;);
+
+MediaPrinter&lt;Media&gt; mediaPrinter = new MediaPrinter&lt;&gt;();
+mediaPrinter.addLast(video1);
+mediaPrinter.addLast(podcast1);
+mediaPrinter.addLast(song1);
+System.out.println(mediaPrinter.print());
+
+MyList&lt;Video&gt; videos = new MyList&lt;&gt;();
+videos.addLast(video1);
+videos.addLast(video2);
+System.out.println(Printer.printVideoList(videos));
+
+MyList&lt;Audio&gt; audios = new MyList&lt;&gt;();
+audios.addLast(podcast1);
+audios.addLast(podcast2);
+audios.addLast(song1);
+System.out.println(Printer.printAudioList(audios));
+
+MyList&lt;Song&gt; songs = new MyList&lt;&gt;();
+songs.addLast(song1);
+songs.addLast(song2);
+songs.addLast(song3);
+System.out.println(Printer.printAudioList(songs));
+
+
+MediaPrinter&lt;Video&gt; videoPrinter = new MediaPrinter&lt;&gt;(); // OK
+
+//Printer.printVideoList(songs); // greška kod prevođenja
+//Printer.printVideoList(mediaPrinter); // greška kod prevođenja
+
+//Printer.printAudioList(mediaPrinter); // greška kod prevođenja
+//Printer.printAudioList(videos); // greška kod prevođenja
+Printer.printAudioList(new MyList&lt;Podcast&gt;()); // OK
+</code></pre>
+<p>Očekivani ispis:</p>
+<pre class="line-numbers"><code class="language-text">Dune is 9300 seconds long.
+Inside Java is 1800 seconds long.
+Free software Song is 122 seconds long.
+
+Dune - 9300 sec. - 3840 x 2160
+Don't Look Up - 8280 sec. - 1920 x 1080
+
+Inside Java - 1800 sec. - MP3
+Coding 101 - 1200 sec. - AAC
+Free software Song - 122 sec. - MP3
+
+Free software Song - 122 sec. - MP3
+Java Life (Code Hard) - 192 sec. - AAC
+I Hate the DMCA - 203 sec. - AAC
+
+</code></pre>
+  <script src="res/prism.js"></script>
+</body>
+</html>

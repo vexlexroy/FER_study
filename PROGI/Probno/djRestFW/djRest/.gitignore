@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django
+db.sqlite3
+*.sqlite3
+
+# Virtual Environment
+venv/
+
+# IDE/Editor specific
+.vscode/
+.idea/
+
+# Other
+# Add any other files or directories specific to your project that should be ignored by Git.

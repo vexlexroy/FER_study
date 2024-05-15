@@ -1,0 +1,26 @@
+
+body{
+	box-sizing: border-box;
+}
+#loginbox{
+	display: flex;
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin-top: 20%;
+}
+form{
+	padding-block: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 2px solid #00000059;
+    border-radius: 5px;
+	
+}
+
+#err{
+	color:red;
+}

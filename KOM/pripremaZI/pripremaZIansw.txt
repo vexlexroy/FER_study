@@ -1,0 +1,31 @@
+1.  b .
+2.  b .
+3.  d .
+4.  c .
+5.  a .
+6.  a .
+7.  c x www oznacava racunalo
+8.  d .
+9.  b .
+10. c .
+11. -nema potvrde o primitku paketu .
+    -nema redosljed poslanih paketa .
+    -ne ponavlja slanje izgubljenih paketa .
+    -nema prilagodbu brzine pejenosa .
+
+12. -1 do 4 .
+    -smanjuje za duplo (x) nema brzog oporavka
+
+13.
+
+14. (pc,mail .life.si),(oba mail servera), (mail,pc .tel.fer.hr).
+
+17. -odredisna pc1,pc2 : 151.73.22.8:80 .
+    -javna pc1: 161.54.20.54:1555 .
+    -javna pc2: 161.54.20.54:1555 .
+    - privatne na slici .
+  b)
+    - http://151.73.22.8/web/index.html .
+
+
+

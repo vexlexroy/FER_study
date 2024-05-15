@@ -1,0 +1,19 @@
+
+[root@IMUNES ~/Desktop]# openssl genpkey -algorithm RSA -out private.pem //KREIRANJE PRIVATNOG KLJUCA
+................+++++
+....................................+++++
+[root@IMUNES ~/Desktop]# openssl rsa -pubout -in private.pem -out 0036538682.pem // KREIRANJE JAVNOG KLJUCA IZ PRIVATNOG
+writing RSA key
+[root@IMUNES ~/Desktop]# openssl dgst -sha256 0036538682.imn > hash            // PRETVARANJE IMN DATOTEKE U HASH                                     
+[root@IMUNES ~/Desktop]# openssl rsautl -sign -inkey private.pem -in hash -out 0036538682.sig  // POTPISIVANJE HASH DATOTEKE
+
+
+// PROVJERA //
+[root@IMUNES ~/Desktop]# openssl rsautl -verify -inkey 0036538682.pem -pubin -keyform PEM -in 0036538682.sig
+SHA256(0036538682.imn)= c5b535856f2194c87316fce0c4b50d4ec6cde9211074a3765b1156063e9f7008   // REZULTAT
+
+
+[root@IMUNES ~/Desktop]# sha256 0036538682.imn
+SHA256 (0036538682.imn) = c5b535856f2194c87316fce0c4b50d4ec6cde9211074a3765b1156063e9f7008 // OCEKIVANO
+[root@IMUNES ~/Desktop]# 
+// PROVJERA //

@@ -1,0 +1,19 @@
+<div id="logo" onclick="location.href='/?session=<%= sessionId %>'"></div>
+
+<div id="kategory_display">
+
+<p id="kategory_txt"><% if(siteID<0){ %>
+   <% if (siteID==-2) {%>CART <%} else {%> KATEGORIJA <%} %>
+ <% } else{ %>  
+   <%= categori[id].name.toUpperCase()%>
+<% } %>
+
+</p>
+</div>
+
+<div id="menue">
+	<a href="/cart?session=<%= sessionId %>"><div id="cart"><br>
+		<span id="elementadd_cart"><div id="product_count"><span id="counttxt">21</span></div></span>
+	</div ></a>
+	<a><div id="sertch"></div></a>
+</div>

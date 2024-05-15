@@ -1,0 +1,196 @@
+
+body{
+	animation: siteload 0.4s;
+	animation-timing-function: ease-in-out;
+}
+
+@keyframes siteload{
+	from{
+		opacity: 0.5;
+	}
+	to{
+		opacity: 1;
+	}
+}
+
+@font-face {
+    font-family: 'minecraft';
+    src: url('../fonts/mcregular-webfont.woff2') format('woff2'),
+         url('../fonts/mcregular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'minecraf';
+    src: url('../fonts/mcbold-webfont.woff2') format('woff2'),
+         url('../fonts/mcbold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+
+
+
+body{
+	background-image:url("../images/background.jpg");
+	background-position:top left;
+	background-size:fill;
+	
+}
+*{
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0;
+}
+#logo{
+	
+	background-color:rgba(90,125,90,1);
+	grid-area:log;
+	background-image:url("../images/logo.png");
+	background-size:contain;
+	background-position:center;
+	background-repeat:no-repeat;
+	border-radius:50px 0 0 50px ;
+	border-bottom: 4px solid rgba(0,0,0,0.3);
+	border-left: 3px solid rgba(0,0,0,0.3);
+	border-top: 4px solid rgba(255,255,255,0.3);
+
+}
+@media (max-width:1024px){
+	#logo{
+	margin: 5px;
+	border-radius:50px;
+	border-bottom: 4px solid rgba(0,0,0,0.3);
+	border-left: 3px solid rgba(0,0,0,0.3);
+	border-top: 4px solid rgba(255,255,255,0.3);
+	border-right: 3px solid rgba(255,255,255,0.3);
+	}
+}
+#kategory_display{
+	background-color:rgba(90,125,90,1);
+	grid-area:kat;
+	text-align:center;
+	padding:auto;
+	border-bottom: 4px solid rgba(0,0,0,0.3);
+	border-top: 4px solid rgba(255,255,255,0.3);
+
+	
+}
+@media (max-width:1024px){
+	#kategory_display{
+	border-radius:50px 0 0 50px;
+	border-bottom: 4px solid rgba(0,0,0,0.3);
+	border-left: 3px solid rgba(0,0,0,0.3);
+	border-top: 4px solid rgba(255,255,255,0.3);
+	}
+}
+#kategory_txt{
+	position:relative;
+	top:calc(50% - 25px);
+	font-size:50px;
+	color: transparent;
+	background:rgba(20,55,20,1);
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
+	text-shadow: -4px 4px 3px rgba(90,125,90,0.6);;
+	font-family:minecraf;
+}
+#menue{
+	
+	background-color:rgba(90,125,90,1);
+	grid-area:men;
+	min-height:54px;
+	padding: 5px;
+	display: flex;
+	border-radius:0 50px  50px 0  ;
+	border-bottom: 4px solid rgba(0,0,0,0.3);
+	border-top: 4px solid rgba(255,255,255,0.3);
+	border-right: 3px solid rgba(255,255,255,0.3);
+	
+}
+#sertch{
+	width:50%;
+	height:100%;
+	background-image: url("../images/povecalo.png");
+	background-position: center;
+	background-size: contain;
+	background-repeat:no-repeat;
+
+}
+#cart{
+	display:flex;
+	width:100%;
+	height:100%;
+	background-image: url("../images/cart.png");
+	background-position: center;
+	background-size: contain;
+	background-repeat:no-repeat;
+	justify-content:center;
+	align-items:center;
+}
+#cart:hover{
+	background-image: url("../images/opend_cart.png");
+}
+#product_count{
+	z-index:3;
+	position:absolute;
+	border-radius:20px;
+	padding:1px;
+	margin-top:5px;
+	margin-left:calc(95% - 28px);
+	text-align:center;
+	background: rgb(87,0,0);
+	background: -moz-radial-gradient(circle, rgba(228,17,17,1) 6%, rgba(102,23,23,1) 74%);
+	background: -webkit-radial-gradient(circle, rgba(228,17,17,1) 6%, rgba(102,23,23,1) 74%);
+	background: radial-gradient(circle, rgba(228,17,17,1) 6%, rgba(102,23,23,1) 74%);
+	background-position:center;
+	height:23px;
+border-bottom: 2px solid rgba(0,0,0,0.3);
+border-left: 2px solid rgba(0,0,0,0.3);
+border-top: 2px solid rgba(255,255,255,0.3);
+border-right: 2px solid rgba(255,255,255,0.3);
+
+-webkit-user-select: none; /* Safari */
+-ms-user-select: none; /* IE 10 and IE 11 */
+user-select: none; /* Standard syntax */
+}
+#counttxt{
+	/*font-family:minecraft;*/
+	color:rgb(255,255,255);
+}
+
+#cart #product_count{
+
+    position: relative;
+    border-radius: 20px;
+    padding: 1px;
+	margin-top:0px;
+    margin-left:-30px;
+    text-align: center;
+    font-size: 9px;
+	background: rgb(87,0,0);
+	background: -moz-radial-gradient(circle, rgba(228,17,17,1) 6%, rgba(102,23,23,1) 74%);
+	background: -webkit-radial-gradient(circle, rgba(228,17,17,1) 6%, rgba(102,23,23,1) 74%);
+	background: radial-gradient(circle, rgba(228,17,17,1) 6%, rgba(102,23,23,1) 74%);
+	background-position:center;
+	height:15px;
+	width:auto;
+border-bottom: 2px solid rgba(0,0,0,0.3);
+border-left: 2px solid rgba(0,0,0,0.3);
+border-top: 2px solid rgba(255,255,255,0.3);
+border-right: 2px solid rgba(255,255,255,0.3);
+}
+
+#product #product_count{
+	font-family:minecraft;
+}
+#menue a{
+	display:flex;
+	height:100%;
+	width:50%;
+	padding:0;
+	margin-right:5px;
+}

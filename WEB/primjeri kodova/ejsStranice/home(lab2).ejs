@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="description" content="Magic Diamond Checkout site">
+<meta name="author" content="Leonardo Roy Sabolić">
+<meta name="vivwport" content="width=device-width, initial-scale=1.0">
+
+<title>Mgic Diamond Shop</title>
+
+<link rel="stylesheet" href="/styles/indexstyle.css">
+<link rel="stylesheet" href="/styles/shared.css">
+<link rel="icon" href="/images/icon.png">
+</head>
+
+<body id="layout_box">
+
+<%- include('partials/header',{ siteID:id }) %>
+<% let sesIDq = "?session=" + sessionId %>
+<div id="kategory_select">
+	<form name="select" onclick = ''>
+		<% for(let i=0;i<categori.length;i++){ %>
+			<input type="radio" name="a" id="<%= categori[i].name.toLowerCase() %>" value="<%= i+2 %>" <% if (id==i){ %> checked="checked" <% } %> onclick='loadSite(<%= i %>,"<%= sesIDq %>")' >
+			<label for="<%= categori[i].name.toLowerCase() %>"><%= categori[i].name.toUpperCase() %></label></input><br>
+		<% } %>
+	</form>
+</div>
+<div id="prezentation_box">
+	<div id="prezentation_txt"><p>!! Best quality  &  Best choice !!</p></div>
+</div>
+
+<div id="info">
+	<p>
+		Call number: 00 000 0000<br>
+		Email: name@tag.f3r<br>
+		Partners: name@tag.f3r<br>
+		Image by <a target="_blank" href="https://www.freepik.com/free-vector/fast-food-icons-pixel-art_29012364.htm#query=pants%20pixel&position=49&from_view=search&track=ais">Freepik</a><br>
+		Image by <a target="_blank" href="https://www.freepik.com/free-vector/realistic-luxury-background-design_17752828.htm#query=gold&position=14&from_view=search&track=sph">Freepik</a><br>
+		<a  target="_blank" href="https://www.freepik.com/free-vector/isometric-texture-cubes-game_17067800.htm#query=pixel%20stone&position=12&from_view=search&track=ais">by upklyak</a> on Freepik<br>
+		<a target="_blank" href="https://www.freepik.com/free-vector/hand-painted-watercolor-galaxy-background_14237502.htm#query=cosmic&position=0&from_view=search&track=sph">by pikisuperstar</a> on Freepik<br>
+	</p>
+</div>
+
+<div id="product_box">
+
+<% if (id >= 0) { %>
+    <% create(id); %>
+<% } else{ let product=0;  } %>
+
+
+<% function create(index) { %>
+  <% let i = index; %>
+  
+  <% for (let j = 0; j < product.length; j++) { %>
+    <div id="product" class="kat_<%= i %>">
+      <div id="product_img">
+        <span id="elementadd_<%= product[j].id %>"></span>
+        <img src="/images/<%= product[j].image %>"
+          onerror="this.onerror=null;this.src='/images/unknown.png';"
+          alt="slika" id="image_style">
+        <div id="add_to_cart" onclick="ispisi(<%= product[j].id %>)">+</div>
+      </div>
+      <p id="title"><br><%= product[j].name %></p>
+    </div>
+  <% } %>
+<% }  %>
+
+<% let curid=id%>
+</div>
+
+<%- include('partials/footer') %>
+
+</body>
+
+<!--
+
+-->
+	<script src="../scripts/cartdata.js"></script>
+	<script src="../scripts/indexscript.js"></script>
+
+</html>

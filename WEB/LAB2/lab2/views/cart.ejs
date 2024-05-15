@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="description" content="Magic Diamond Checkout site">
+<meta name="author" content="Leonardo Roy Sabolić">
+<meta name="vivwport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="images/icon.png">
+<title>Mgic Diamond Cart</title>
+
+<link rel="stylesheet" href="styles/shared.css">
+<link rel="stylesheet" href="styles/cartstyle.css">
+
+</head>
+
+
+<body id="layout_box">
+
+<%- include('partials/header',{ siteID:-2 }) %>
+
+<div id="cart_box">
+	<div id="cart_content">
+	
+<span id="hedder">
+  <div id="product_line">
+    <div id="previev"></div>
+    <div id="name">Name</div>
+    <div id="buttonl">-</div>
+    <div id="ccount">Amount</div>
+    <div id="buttonr">+</div>
+  </div>
+</span>
+	
+	
+<% let c=0 %>
+<% for (let i = 0; i < data.categories.length; i++) { %>
+  <% for (let j = 0; j < data.categories[i].products.length; j++) { %>
+    <% if (productCount[c] > 0) { %>
+      <span id="<%= c %>">
+        <div id="product_line" class="kat_<%= i %>">
+          <div id="previev">
+            <img src="../images/<%= data.categories[i].products[j].image %>"
+              onerror="this.onerror=null;this.src='images/unknown.png';"
+              alt="slika" id="image_style">
+          </div>
+          <div id="name"><%= data.categories[i].products[j].name %></div>
+          <div id="buttonl" onclick="subtractcart(<%= c %>)">-</div>
+          <div id="ccount">
+            <span id="content_<%= i + '' + j %>"><%= productCount[c] %></span>
+          </div>
+          <div id="buttonr" onclick="addtocart(<%= c %>)">+</div>
+        </div>
+      </span>
+    <% } %>
+  <% c++; } %>
+<% } %>
+		
+	</div>
+</div>
+
+<%- include('partials/footer') %>
+
+</body>
+
+
+
+
+
+
+
+<!--
+
+-->
+<script src="scripts/cartdata.js"></script>
+</html>

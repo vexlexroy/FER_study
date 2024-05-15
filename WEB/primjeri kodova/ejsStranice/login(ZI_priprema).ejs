@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+
+<html>
+	<head>
+	<link rel="stylesheet" href="/stilLog.css">
+	</head>
+	
+	<body>
+	<h1>Subscribe to <%= ime %></h1>
+	<% if(err){ %><h1 id="err">Korisnik s podacima <%= user %> vec postoji</h1><% } %>
+	<hr>
+		<div id="loginbox">
+			<form>
+			  <label for="fname">User:</label><br>
+			  <input type="text" id="user" name="fname" value=''><br>
+			  <label for="lname">Email:</label><br>
+			  <input type="text" id="email" name="lname" value=''><br><br>
+			  <button  onclick="return submitData()" type="button">Submit</button>
+			</form> 
+			
+		</div>
+	</body>
+<script>
+	function submitData(){
+		var user=document.getElementById("user");
+		var email=document.getElementById("email");
+		
+		
+		if(user.value==''||email.value==''){
+			alert("ostavili ste prazno polje");
+		}
+		else{
+			let link=user.value+" "+email.value;
+			var mail=email.value.split("@");
+			if(mail.length==2){
+			var add=mail[1].split(".");
+			if( (mail.length==2 && add.length==2) && (mail[0]!=''&& add[0]!='' && add[1]!='') ){
+				window.location.href ="http://localhost:3000/login/<%= trenutno %>/submit/"+link;
+			}
+			else{
+				alert("neispravan unos email addrese, pazite da oblik bude example@subdomain.domain");
+			}
+			}
+			else{
+				alert("neispravan unos email addrese, pazite da oblik bude example@subdomain.domain");
+			}
+		}
+		return false;
+	}
+</script>
+
+</html>

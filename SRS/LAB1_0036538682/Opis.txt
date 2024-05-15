@@ -1,0 +1,30 @@
+1. Koristen AES s modom GCM
+
+2. Za kljuc je koristen derivirani kljuc od unesenog master passworda
+    Za derivaciju kljuca je koristen PBKDF2 duljine 32
+
+3. Pri enkripciji podataka je koristen i generirani salt/nonce
+    Isprobano je generiranje iste duzine s istim salt-om te je enkripcija uvijek razlicite duljine
+    Te uz generirani salt isti podatci ce zbog razlicitog salta imat drugcije duljine
+
+4. Za hash se koristi SHA256
+    Pri savakoj promjeni baze podataka (json datoteke), cijela se hashira i taj hash se potom sprema enkriptano
+    Pri svakoj autentikaciji korisnika dekriptira se hash datoteke i usporeduje s novim hashem datoteke te,
+    ako je ili master password neispravan ili datoteka izmjenjena pada na provjeri te se ispisuje poruka korisniku.
+
+5. Podatci su pohranjeni u obliku:
+
+{
+  "hash": enkriptan hash datoteke,
+  "salt0": salt/nunce koristen za enkripciju hash-a datoteke,
+  "salt1": salt/nince koristen za enkripciju check fraze,
+  "check": enkriptan-a fraza za provjere,
+  "data": {
+    enkriptirana adresa: [
+      enkriptirana lozinka,
+      salt/nunce koristen pri enkripciji adrese/lozinke
+    ]
+  }
+}
+
+6. Pri svakoj promjeni datoteke fraza se ponovo enkripta, te se sve ponovo hasha.

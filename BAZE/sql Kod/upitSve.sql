@@ -1,0 +1,1 @@
+SELECT * FROM student WHERE prezimestudent LIKE 'Marković' ORDER BY imestudent;

@@ -1,0 +1,275 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+   <meta charset="UTF-8">
+  <link href="res/prism.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+    }
+    code {
+      font-size: 16px;
+      font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    }
+  </style>
+</head>
+<body>
+<h1>Task 2 (7 points)</h1>
+<p>Your task is to write the program code in the way specified by the UML class diagram in the image.</p>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="747px" preserveAspectRatio="none" style="width:772px;height:747px;background:#FFFFFF;" version="1.1" viewBox="0 0 772 747" width="772px" zoomAndPan="magnify">
+<defs/>
+<g>
+<!--MD5=[cbc984a6a6086109243884c87806a70e]
+class Movable-->
+<a href="java:hr.fer.oop.mtexam.task2.Movable" target="_top" title="java:hr.fer.oop.mtexam.task2.Movable" xlink:actuate="onRequest" xlink:href="java:hr.fer.oop.mtexam.task2.Movable" xlink:show="new" xlink:title="java:hr.fer.oop.mtexam.task2.Movable" xlink:type="simple">
+<g id="elem_Movable">
+<rect codeLine="1" fill="#F1F1F1" height="64.4883" id="Movable" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="175" x="48.5" y="288"/>
+<ellipse cx="103.25" cy="304" fill="#B4A7E5" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+<path d="M99.6777,300.2651 L99.6777,298.1069 L107.0571,298.1069 L107.0571,300.2651 L104.5918,300.2651 L104.5918,308.3418 L107.0571,308.3418 L107.0571,310.5 L99.6777,310.5 L99.6777,308.3418 L102.1431,308.3418 L102.1431,300.2651 Z " fill="#000000"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="57" x="123.75" y="309.291">Movable</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="49.5" x2="222.5" y1="320" y2="320"/>
+<line style="stroke:#181818;stroke-width:0.5;" x1="49.5" x2="222.5" y1="328" y2="328"/>
+<ellipse cx="59.5" cy="341.7441" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="149" x="68.5" y="345.5352">doRemoteTask(): void</text>
+</g>
+</a>
+<!--MD5=[9d44916250b776386006c440668bcfbb]
+class Agent-->
+<a href="java:hr.fer.oop.mtexam.task2.Agent" target="_top" title="java:hr.fer.oop.mtexam.task2.Agent" xlink:actuate="onRequest" xlink:href="java:hr.fer.oop.mtexam.task2.Agent" xlink:show="new" xlink:title="java:hr.fer.oop.mtexam.task2.Agent" xlink:type="simple">
+<g id="elem_Agent">
+<rect codeLine="5" fill="#F1F1F1" height="179.9063" id="Agent" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="219" x="340.5" y="230"/>
+<ellipse cx="425.25" cy="246" fill="#A9DCDF" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+<path d="M425.1133,241.3481 L423.9595,246.4199 L426.2754,246.4199 Z M423.6191,239.1069 L426.6157,239.1069 L429.9609,251.5 L427.5122,251.5 L426.7485,248.437 L423.4697,248.437 L422.7227,251.5 L420.2739,251.5 Z " fill="#000000"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="41" x="445.75" y="251.291">Agent</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="341.5" x2="558.5" y1="262" y2="262"/>
+<rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="348.5" y="272.7441"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87" x="360.5" y="279.5352">name: String</text>
+<rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="348.5" y="289.2324"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="360.5" y="296.0234">ID: int</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="341.5" x2="558.5" y1="302.9766" y2="302.9766"/>
+<polygon fill="#4177AF" points="351.5,312.7207,347.5,318.7207,355.5,318.7207" style="stroke:#1963A0;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="186" x="360.5" y="320.5117">Agent(name: String, ID: int)</text>
+<ellipse cx="351.5" cy="333.209" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120" x="360.5" y="337">getName(): String</text>
+<ellipse cx="351.5" cy="349.6973" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="193" x="360.5" y="353.4883">setName(name: String): void</text>
+<ellipse cx="351.5" cy="366.1855" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="72" x="360.5" y="369.9766">getID(): int</text>
+<ellipse cx="351.5" cy="382.6738" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="155" x="360.5" y="386.4648">getAgentType(): String</text>
+<ellipse cx="351.5" cy="399.1621" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="114" x="360.5" y="402.9531">toString(): String</text>
+</g>
+</a>
+<!--MD5=[99bd08b3cf3a243eb40e9d3b0ad1d2aa]
+class MobileAgent-->
+<a href="java:hr.fer.oop.mtexam.task2.MobileAgent" target="_top" title="java:hr.fer.oop.mtexam.task2.MobileAgent" xlink:actuate="onRequest" xlink:href="java:hr.fer.oop.mtexam.task2.MobileAgent" xlink:show="new" xlink:title="java:hr.fer.oop.mtexam.task2.MobileAgent" xlink:type="simple">
+<g id="elem_MobileAgent">
+<rect codeLine="16" fill="#F1F1F1" height="130.4414" id="MobileAgent" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="258" x="7" y="470"/>
+<ellipse cx="88.25" cy="486" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+<path d="M90.7231,492.1431 Q90.1421,492.4419 89.5029,492.5913 Q88.8638,492.7407 88.1582,492.7407 Q85.6514,492.7407 84.3315,491.0889 Q83.0117,489.437 83.0117,486.3159 Q83.0117,483.1865 84.3315,481.5347 Q85.6514,479.8828 88.1582,479.8828 Q88.8638,479.8828 89.5112,480.0322 Q90.1587,480.1816 90.7231,480.4805 L90.7231,483.2031 Q90.0923,482.6221 89.4988,482.3523 Q88.9053,482.0825 88.2744,482.0825 Q86.9297,482.0825 86.2449,483.1492 Q85.5601,484.2158 85.5601,486.3159 Q85.5601,488.4077 86.2449,489.4744 Q86.9297,490.541 88.2744,490.541 Q88.9053,490.541 89.4988,490.2712 Q90.0923,490.0015 90.7231,489.4204 Z " fill="#000000"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87" x="108.75" y="491.291">MobileAgent</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="264" y1="502" y2="502"/>
+<rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="15" y="512.7441"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="67" x="27" y="519.5352">taskId: int</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="264" y1="526.4883" y2="526.4883"/>
+<ellipse cx="18" cy="540.2324" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="232" x="27" y="544.0234">MobileAgent(name: String, ID: int)</text>
+<ellipse cx="18" cy="556.7207" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="103" x="27" y="560.5117">getTaskId(): int</text>
+<ellipse cx="18" cy="573.209" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="155" x="27" y="577">getAgentType(): String</text>
+<ellipse cx="18" cy="589.6973" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="149" x="27" y="593.4883">doRemoteTask(): void</text>
+</g>
+</a>
+<!--MD5=[310de4bd196bf6c4819411d4d45ba4f1]
+class IntelligentAgent-->
+<a href="java:hr.fer.oop.mtexam.task2.IntelligentAgent" target="_top" title="java:hr.fer.oop.mtexam.task2.IntelligentAgent" xlink:actuate="onRequest" xlink:href="java:hr.fer.oop.mtexam.task2.IntelligentAgent" xlink:show="new" xlink:title="java:hr.fer.oop.mtexam.task2.IntelligentAgent" xlink:type="simple">
+<g id="elem_IntelligentAgent">
+<rect codeLine="24" fill="#F1F1F1" height="113.9531" id="IntelligentAgent" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="465" x="300.5" y="478"/>
+<ellipse cx="473.75" cy="494" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+<path d="M476.2231,500.1431 Q475.6421,500.4419 475.0029,500.5913 Q474.3638,500.7407 473.6582,500.7407 Q471.1514,500.7407 469.8315,499.0889 Q468.5117,497.437 468.5117,494.3159 Q468.5117,491.1865 469.8315,489.5347 Q471.1514,487.8828 473.6582,487.8828 Q474.3638,487.8828 475.0112,488.0322 Q475.6587,488.1816 476.2231,488.4805 L476.2231,491.2031 Q475.5923,490.6221 474.9988,490.3523 Q474.4053,490.0825 473.7744,490.0825 Q472.4297,490.0825 471.7449,491.1492 Q471.0601,492.2158 471.0601,494.3159 Q471.0601,496.4077 471.7449,497.4744 Q472.4297,498.541 473.7744,498.541 Q474.4053,498.541 474.9988,498.2712 Q475.5923,498.0015 476.2231,497.4204 Z " fill="#000000"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="494.25" y="499.291">IntelligentAgent</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="301.5" x2="764.5" y1="510" y2="510"/>
+<line style="stroke:#181818;stroke-width:0.5;" x1="301.5" x2="764.5" y1="518" y2="518"/>
+<ellipse cx="311.5" cy="531.7441" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="439" x="320.5" y="535.5352">IntelligentAgent(name: String, ID:int, type: IntelligentAgentType)</text>
+<ellipse cx="311.5" cy="548.2324" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="216" x="320.5" y="552.0234">getType(): IntelligentAgentType</text>
+<ellipse cx="311.5" cy="564.7207" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="280" x="320.5" y="568.5117">setType(type: IntelligentAgentType): void</text>
+<ellipse cx="311.5" cy="581.209" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="155" x="320.5" y="585">getAgentType(): String</text>
+</g>
+</a>
+<!--MD5=[3c2274f1699998e59c9007dd488bd2ae]
+class IntelligentAgentType-->
+<a href="java:hr.fer.oop.mtexam.task2.IntelligentAgentType" target="_top" title="java:hr.fer.oop.mtexam.task2.IntelligentAgentType" xlink:actuate="onRequest" xlink:href="java:hr.fer.oop.mtexam.task2.IntelligentAgentType" xlink:show="new" xlink:title="java:hr.fer.oop.mtexam.task2.IntelligentAgentType" xlink:type="simple">
+<g id="elem_IntelligentAgentType">
+<rect codeLine="31" fill="#F1F1F1" height="80.9766" id="IntelligentAgentType" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="175" x="445.5" y="660"/>
+<ellipse cx="460.5" cy="676" fill="#EB937F" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+<path d="M464.1143,682.5 L456.3945,682.5 L456.3945,670.1069 L464.1143,670.1069 L464.1143,672.2651 L458.8433,672.2651 L458.8433,674.938 L463.6162,674.938 L463.6162,677.0962 L458.8433,677.0962 L458.8433,680.3418 L464.1143,680.3418 Z " fill="#000000"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="143" x="474.5" y="681.291">IntelligentAgentType</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="446.5" x2="619.5" y1="692" y2="692"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="73" x="451.5" y="709.5352">REASONER</text>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="61" x="451.5" y="726.0234">LEARNER</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="446.5" x2="619.5" y1="732.9766" y2="732.9766"/>
+</g>
+</a>
+<!--MD5=[f93d711d323c3f7c53d2835d3befb34b]
+class MultiAgentSystem-->
+<a href="java:hr.fer.oop.mtexam.task2.MultiAgentSystem" target="_top" title="java:hr.fer.oop.mtexam.task2.MultiAgentSystem" xlink:actuate="onRequest" xlink:href="java:hr.fer.oop.mtexam.task2.MultiAgentSystem" xlink:show="new" xlink:title="java:hr.fer.oop.mtexam.task2.MultiAgentSystem" xlink:type="simple">
+<g id="elem_MultiAgentSystem">
+<rect codeLine="36" fill="#F1F1F1" height="163.418" id="MultiAgentSystem" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="303" x="298.5" y="7"/>
+<ellipse cx="384.25" cy="23" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
+<path d="M386.7231,29.1431 Q386.1421,29.4419 385.5029,29.5913 Q384.8638,29.7407 384.1582,29.7407 Q381.6514,29.7407 380.3315,28.0889 Q379.0117,26.437 379.0117,23.3159 Q379.0117,20.1865 380.3315,18.5347 Q381.6514,16.8828 384.1582,16.8828 Q384.8638,16.8828 385.5112,17.0322 Q386.1587,17.1816 386.7231,17.4805 L386.7231,20.2031 Q386.0923,19.6221 385.4988,19.3523 Q384.9053,19.0825 384.2744,19.0825 Q382.9297,19.0825 382.2449,20.1492 Q381.5601,21.2158 381.5601,23.3159 Q381.5601,25.4077 382.2449,26.4744 Q382.9297,27.541 384.2744,27.541 Q384.9053,27.541 385.4988,27.2712 Q386.0923,27.0015 386.7231,26.4204 Z " fill="#000000"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123" x="404.75" y="28.291">MultiAgentSystem</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="299.5" x2="600.5" y1="39" y2="39"/>
+<rect fill="none" height="6" style="stroke:#C82930;stroke-width:1.0;" width="6" x="306.5" y="49.7441"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="105" x="318.5" y="56.5352">generatedId:int</text>
+<line style="stroke:#181818;stroke-width:0.5;" x1="299.5" x2="600.5" y1="63.4883" y2="63.4883"/>
+<ellipse cx="309.5" cy="77.2324" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="277" x="318.5" y="81.0234">MultiAgentSystem(numberOfAgents: int)</text>
+<ellipse cx="309.5" cy="93.7207" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="177" x="318.5" y="97.5117">getNumberOfAgents(): int</text>
+<ellipse cx="309.5" cy="110.209" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="318.5" y="114">getAgents(): Agent[]</text>
+<ellipse cx="309.5" cy="126.6973" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="202" x="318.5" y="130.4883">addAgent(agent: Agent): void</text>
+<ellipse cx="309.5" cy="143.1855" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="155" x="318.5" y="146.9766">printSystemInfo(): void</text>
+<ellipse cx="309.5" cy="159.6738" fill="#84BE84" rx="3" ry="3" style="stroke:#038048;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="110" x="318.5" y="163.4648">generateId(): int</text>
+</g>
+</a>
+<!--MD5=[c55417b4ec30179b3351cdc082475050]
+reverse link Agent to MobileAgent-->
+<g id="link_Agent_MobileAgent">
+<path codeLine="46" d="M323.59,406.75 C292.47,427.86 259.67,450.11 230.37,469.99 " fill="none" id="Agent-backto-MobileAgent" style="stroke:#181818;stroke-width:1.0;"/>
+<polygon fill="none" points="319.7,400.93,340.18,395.5,327.56,412.52,319.7,400.93" style="stroke:#181818;stroke-width:1.0;"/>
+</g>
+<!--MD5=[3897ff4a5c034480ce5091b1126b3073]
+reverse link Movable to MobileAgent-->
+<g id="link_Movable_MobileAgent">
+<path codeLine="47" d="M136,372.65 C136,401.9 136,438.75 136,469.85 " fill="none" id="Movable-backto-MobileAgent" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/>
+<polygon fill="none" points="129,372.43,136,352.43,143,372.43,129,372.43" style="stroke:#181818;stroke-width:1.0;"/>
+</g>
+<!--MD5=[d743c9e197e3a9e364ad8d2880fb85b5]
+reverse link Agent to IntelligentAgent-->
+<g id="link_Agent_IntelligentAgent">
+<path codeLine="48" d="M492,428.78 C498.6,445.72 505.18,462.62 511.08,477.75 " fill="none" id="Agent-backto-IntelligentAgent" style="stroke:#181818;stroke-width:1.0;"/>
+<polygon fill="none" points="485.46,431.27,484.72,410.1,498.5,426.19,485.46,431.27" style="stroke:#181818;stroke-width:1.0;"/>
+</g>
+<!--MD5=[0345d423c21acd01f8593146ddd34018]
+link IntelligentAgent to IntelligentAgentType-->
+<g id="link_IntelligentAgent_IntelligentAgentType">
+<path codeLine="49" d="M533,592.27 C533,612.62 533,635.31 533,654.55 " fill="none" id="IntelligentAgent-to-IntelligentAgentType" style="stroke:#181818;stroke-width:1.0;"/>
+<polygon fill="#181818" points="533,659.89,537,650.89,533,654.89,529,650.89,533,659.89" style="stroke:#181818;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="47" x="481.9609" y="649.2182">-type 1</text>
+</g>
+<!--MD5=[682a233503d82ad48b8e148163ce8ba9]
+link MultiAgentSystem to Agent-->
+<g id="link_MultiAgentSystem_Agent">
+<path codeLine="50" d="M450,170.09 C450,187.8 450,206.7 450,224.89 " fill="none" id="MultiAgentSystem-to-Agent" style="stroke:#181818;stroke-width:1.0;"/>
+<polygon fill="#181818" points="450,230,454,221,450,225,446,221,450,230" style="stroke:#181818;stroke-width:1.0;"/>
+<text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="76" x="370.7344" y="219.2068">-agents 0..*</text>
+</g>
+<!--MD5=[017f94d16bf6c77eb128f2583d8a50f8]
+@startuml
+interface Movable [[java:hr.fer.oop.mtexam.task2.Movable]] {
+	+doRemoteTask(): void
+}
+
+abstract class Agent [[java:hr.fer.oop.mtexam.task2.Agent]] {
+	-name: String
+	-ID: int
+	~Agent(name: String, ID: int)
+	+getName(): String
+	+setName(name: String): void
+	+getID(): int
+	+{abstract} getAgentType(): String
+	+toString(): String
+}
+
+class MobileAgent [[java:hr.fer.oop.mtexam.task2.MobileAgent]] {
+	-taskId: int
+	+MobileAgent(name: String, ID: int)
+	+getTaskId(): int
+	+getAgentType(): String
+	+doRemoteTask(): void
+}
+
+class IntelligentAgent [[java:hr.fer.oop.mtexam.task2.IntelligentAgent]] {
+	+IntelligentAgent(name: String, ID:int, type: IntelligentAgentType)
+	+getType(): IntelligentAgentType
+	+setType(type: IntelligentAgentType): void
+	+getAgentType(): String
+}
+
+enum IntelligentAgentType [[java:hr.fer.oop.mtexam.task2.IntelligentAgentType]] {
+	REASONER
+	LEARNER
+}
+
+class MultiAgentSystem [[java:hr.fer.oop.mtexam.task2.MultiAgentSystem]] {
+	-{static} generatedId:int
+	+MultiAgentSystem(numberOfAgents: int)
+	+getNumberOfAgents(): int
+	+getAgents(): Agent[]
+	+addAgent(agent: Agent): void
+	+printSystemInfo(): void
+	+{static} generateId(): int
+}
+
+Agent <|- - MobileAgent
+Movable <|.. MobileAgent
+Agent <|- - IntelligentAgent
+IntelligentAgent - -> "-type 1" IntelligentAgentType
+MultiAgentSystem - -> "-agents 0..*" Agent
+@enduml
+
+PlantUML version 1.2022.12(Sun Oct 23 20:12:26 CEST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: HR
+-->
+</g>
+</svg>
+<p>Visibility legend in the class diagram:</p>
+<p><img src="res/vidljivost.png" alt="Legenda vidljivosti" /></p>
+<p><strong>Note:</strong> All classes and interfaces have visibility set to <em>package private</em> and are in the <code>hr.fer.oop.mtexam.task2</code> package.</p>
+<p>The <code>MultiAgentSystem</code> class is a multi-agent system that can contains 0 or more software agents. The maximum number of agents is found in the <code>numberOfAgents</code> constructor's argument. If the <code>numberOfAgents</code> is out of range then it is assumed to be 1. The <code>generateId()</code> static method generates unique agents' identification numbers in such a way that the <code>generatedId</code> static member variable increases by 1 after each creation of a new agent. If the number of agents in a multi-agent system is greater than the maximum number of agents, then the <code>addAgent()</code> method does nothing. The <code>agents</code> member variable is indexed using the agent's identification number.</p>
+<p>The <code>Agent</code> abstract class represents a specific mobile or intelligent agent. The <code>name</code> i <code>ID</code> member variables define the name and identification number of the agent that cannot be changed after it is set in the <code>ID</code> constructor's argument (using the <code>generateId()</code> static method from the <code>MultiAgentSystem</code> class). The <code>getAgentType()</code> abstract method needs to be overridden in derived classes by returning a string <code>mobile agent</code> (if it is a mobile agent) or a string <code>intelligent agent</code> (if it is an intelligent agent). Calling the <code>toString()</code> method returns text with the agent's name and identification number printed. An example printout is below in the usage example.</p>
+<p>The type of intelligent agent is defined by the <code>IntelligentAgentType</code> enumeration which can have two values <code>REASONER</code> and <code>LEARNER</code>. The value of the <code>taskId</code> member variable in the <code>MobileAgent</code> class represents ID of task (which the mobile agent performs on a remote computer) and is set in the constructor using the <code>doRemoteTask()</code> method which generates a random integer in the interval [1, 10].</p>
+<p>The <code>printSystemInfo()</code> method in the <code>MultiAgentSystem</code> class prints agents that are members of a defined multi-agent system. The <code>getAgentType()</code> and <code>toString()</code> method calls are used to print the agent's type, name, and identification number. If an agent is <code>null</code>, then that printout is skipped.</p>
+<p><em>Usage example</em>:</p>
+<pre class="line-numbers"><code class="language-java">MultiAgentSystem mas = new MultiAgentSystem(4);
+
+mas.addAgent(new MobileAgent(&quot;Speedy&quot;, MultiAgentSystem.generateId()));
+mas.addAgent(new MobileAgent(&quot;Agile&quot;, MultiAgentSystem.generateId()));
+mas.addAgent(new IntelligentAgent(&quot;Brainy&quot;, MultiAgentSystem.generateId(), IntelligentAgentType.REASONER));
+mas.addAgent(new IntelligentAgent(&quot;Smart&quot;, MultiAgentSystem.generateId(), IntelligentAgentType.LEARNER));
+
+mas.printSystemInfo();
+
+System.out.println(&quot;---&quot;);
+System.out.println(new MobileAgent(&quot;Fast&quot;, MultiAgentSystem.generateId()));
+System.out.println(new IntelligentAgent(&quot;Clever&quot;, MultiAgentSystem.generateId(), IntelligentAgentType.REASONER));
+</code></pre>
+<p><em>Expected output</em>:</p>
+<pre class="line-numbers"><code class="language-sh">mobile agent (name: Speedy, id: 0)
+mobile agent (name: Agile, id: 1)
+intelligent agent (name: Brainy, id: 2)
+intelligent agent (name: Smart, id: 3)
+---
+(name: Fast, id: 4)
+(name: Clever, id: 5)
+</code></pre>
+  <script src="res/prism.js"></script>
+</body>
+</html>

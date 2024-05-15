@@ -1,0 +1,18 @@
+@startuml
+abstract class hr.fer.oop.Agent
+annotation java.lang.Override
+class hr.fer.oop.IntelligentAgent
+class hr.fer.oop.Main
+class hr.fer.oop.MobileAgent
+class hr.fer.oop.MultiAgentSystem
+class java.util.Random
+enum hr.fer.oop.IntelligentAgentType
+interface hr.fer.oop.Movable
+hr.fer.oop.Agent ..> java.lang.Override
+hr.fer.oop.IntelligentAgent --|> hr.fer.oop.Agent
+hr.fer.oop.IntelligentAgent ..> java.lang.Override
+hr.fer.oop.MobileAgent --|> hr.fer.oop.Agent
+hr.fer.oop.MobileAgent ..> java.lang.Override
+hr.fer.oop.MobileAgent ..> java.util.Random
+hr.fer.oop.MobileAgent --|> hr.fer.oop.Movable
+@enduml

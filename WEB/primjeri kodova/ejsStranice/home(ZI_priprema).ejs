@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+
+<html>
+	<head>
+	<link rel="stylesheet" href="stilhome.css">
+	</head>
+	
+	<body>
+	
+		<h1>Please subscribe...</h1>
+		<hr>
+		<div id="prodbox">
+			<% for(var i=0;i<k.length;i++){ var len = k[i].length %>
+				<div id="prod">
+					<h3 id="title"><%= kat[i] %>(<%= len %>)</h3>
+					<img id="prodimg" src="/images/<%= kat[i] %>.jpg">
+					<button onclick="window.location.href ='<%= "http://localhost:3000/login/"+kat[i]+":"+i %>'">Subscribe</button>
+				</div>
+			<% } %>
+		</div>
+	</body>
+
+
+</html>
