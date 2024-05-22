@@ -22,19 +22,19 @@ class desTree:
             et_val=et_val - (posible_val[x]/num_of_all)*math.log2(posible_val[x]/num_of_all)
         return et_val
 
-    def info_gain(self, dataset, factor):
+    def info_gain(self, dataset, znacajka):
         data_dict={}
         raz_znacajke={}
         ig_sum=0
         for i,x in enumerate(dataset[0]):
             data_dict[x]=[vals for vals in dataset[i][1:]]
-        for x in data_dict[factor]:
+        for x in data_dict[znacajka]:
             if(x in raz_znacajke):
                 raz_znacajke[x]=raz_znacajke[x]+1
             else:
                 raz_znacajke[x]=1
         for x in raz_znacajke:
-            ig_sum = ig_sum + (raz_znacajke[x]/len(data_dict[factor]))*self.entropy()
+            ig_sum = ig_sum + (raz_znacajke[x]/len(data_dict[znacajka]))*self.entropy() #fix
 
         return self.totla_entropy - ig_sum
         
