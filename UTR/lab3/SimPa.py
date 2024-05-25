@@ -39,6 +39,10 @@ def checkGrammer(grammer, key, stog, last, acpt):
             rez = rez + epsrez
         return newstog, newstate, rez
     else:
+        # Check epsilon transitions before failing
+        epsrez, newstog, newstate = checkEpsilonFirst(grammer, key[0], stog, last, acpt)
+        if len(epsrez) > 0:
+            return newstog, newstate, epsrez
         rez = rez + "fail|"
         return None, None, rez
 
