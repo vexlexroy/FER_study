@@ -1,2 +1,5 @@
 Katamari/
 *.zip
+bin/
+obj/
+.vs/

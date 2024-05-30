@@ -8,6 +8,7 @@
 #include <sys/types.h>
 #include "GL/glut.h"
 
+
 #define PI 3.14159
 
 /* "referenciranjem" na pojedini od sljedecih naziva mogu se koristiti 
@@ -22,7 +23,7 @@
  * svoje osi i oko Sunca, te Mjeseca oko svoje osi i oko Zemlje  
  */
 static double earthDay = 0, earthYear = 0, moonDay = 0, moonYear = 0; 
-
+int spead = 1;
 void init(void) 
 {
 // definiranje komponenti lokalnog osvjetljenja pojedinih materijala 
@@ -92,10 +93,54 @@ void reshape (int w, int h)
 
 void drawSphere(float R, float step)
 {
-/* potrebno je nadopuniti funkciju drawSphere tako da iscrtava 
- * kuglu (naputak: koristiti kod iz drugog zadatka ove laboratorijske
- * vjezbe)
- */
+	int i = 0;
+	float theta, fi,
+		koord1[3] = { 0.0,0.0,0.0 },
+		koord2[3] = { 0.0,0.0,0.0 },
+		koord3[3] = { 0.0,0.0,0.0 },
+		koord4[3] = { 0.0,0.0,0.0 };
+
+	for (fi = 0; fi < PI; fi = fi + step)
+	{
+		for (theta = 0; theta <= 2 * PI; theta = theta + 0.1, i = (i + 1) % 2)
+		{
+			if (i == 0)
+			{
+				koord1[0] = R * cos(theta) * sin(fi);
+				koord1[1] = R * sin(theta) * sin(fi);
+				koord1[2] = R * cos(fi);
+
+				koord2[0] = R * cos(theta) * sin(fi + step);
+				koord2[1] = R * sin(theta) * sin(fi + step);
+				koord2[2] = R * cos(fi + step);
+			}
+
+			else if (i == 1)
+			{
+				koord3[0] = R * cos(theta) * sin(fi);
+				koord3[1] = R * sin(theta) * sin(fi);
+				koord3[2] = R * cos(fi);
+
+				koord4[0] = R * cos(theta) * sin(fi + step);
+				koord4[1] = R * sin(theta) * sin(fi + step);
+				koord4[2] = R * cos(fi + step);
+			}
+
+			glBegin(GL_QUAD_STRIP);
+			glVertex3fv(koord1);
+			glNormal3fv(koord1);
+
+			glVertex3fv(koord2);
+			glNormal3fv(koord2);
+
+			glVertex3fv(koord3);
+			glNormal3fv(koord3);
+
+			glVertex3fv(koord4);
+			glNormal3fv(koord4);
+			glEnd();
+		}
+	}
 }
 
 void display(void)
@@ -123,6 +168,28 @@ void display(void)
  * glCallList (YELLOWMAT) pridodali zutu boju i svojstva doticnog  
  * materijala
  */ 
+	//sunce
+	glCallList(YELLOWMAT);
+	drawSphere(6.96, 0.01);
+
+	// Earth orbiting around the Sun
+	glRotatef((GLfloat)earthYear, 0.0, 1.0, 0.0);
+	glTranslatef(14.96, 0.0, 0.0);
+	glRotatef((GLfloat)earthDay, 0.0, 1.0, 0.0);
+
+	//zemlja
+	glCallList(BLUEMAT);
+	drawSphere(0.63, 0.1);
+
+	// Moon orbiting around the Earth
+	glRotatef((GLfloat)moonYear, 0.0, 1.0, 0.0);
+	glTranslatef(1.0, 0.0, 0.0);
+	glRotatef((GLfloat)moonDay, 0.0, 1.0, 0.0);
+
+	//mjesec
+	glCallList(WHITEMAT);
+	drawSphere(0.17, 0.1);
+
 	glPopMatrix();
 
 	glutSwapBuffers();
@@ -159,9 +226,9 @@ void spinDisplay(void)
 		startTime = getCurrentTimeMs();
 
 	currentTime = getCurrentTimeMs();
-
+	
 // racunanje relativnog vremena proteklog od pocetka simulacije	
-	seconds = (double) (currentTime - startTime) / (double) 1000;
+	seconds = (double) (currentTime - startTime) / (double) (1000*spead);
 
 /* Funkcija koja iz relativnog vremena (razlike izmedju trenutnog 
  * sistemskog vremena i sistemskog vremena na pocetku simulacije)
@@ -175,6 +242,11 @@ void spinDisplay(void)
  * oko Sunca/svoje osi.
  */
 
+	// ayuriranje rotacije
+	earthDay = fmod(seconds * 360.0 / 1.0, 360.0); // Earth rotates on its axis once per second
+	earthYear = fmod(seconds * 360.0 / 365.0, 360.0); // Earth orbits the Sun once per 365 seconds
+	moonDay = fmod(seconds * 360.0 / 29.5, 360.0); // Moon rotates on its axis once per 29.5 seconds
+	moonYear = fmod(seconds * 360.0 / 27.3, 360.0); // Moon orbits the Earth once per 27.3 seconds
 
 // "oznaka" koja kaze da je prozor potrebno ponovno iscrtati
 	glutPostRedisplay();
@@ -189,6 +261,7 @@ void spinDisplay(void)
  * prozora), i to u svakom "frame-u" (cime cemo postici da se za svaki
  * "frame" mogu izracunati novi kutevi rotacije Zemlje i Mjeseca) 
  */ 
+
 void mouse(int button, int state, int x, int y) 
 {
 	switch (button) {
