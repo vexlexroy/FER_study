@@ -2,7 +2,26 @@ import sys
 import argparse
 import numpy
 
+class Genetika:
+    train_set:dict
+    test_set:dict
+    nn:str
+    popsize:int
+    elitism:int
+    mut_prob:float
+    noise:float
+    iterate:int
+    def __init__(self, train_set:dict, test_set:dict, nn:str, pops:int, elit:int, p:float, K:float, itr:int):
+        self.train_set=train_set
+        self.test_set=test_set
+        self.nn=nn
+        self.popsize=pops
+        self.elitism=elit
+        self.mut_prob=p
+        self.noise=K
+        self.iterate=itr
 
+    
 
 
 # ucitavanje podataka
@@ -50,6 +69,7 @@ def parse_in(args):
 
 
 if __name__=='__main__':
-     print("start")
-     print(parse_in(sys.argv[1:]))
-     
+    #  print("start")
+    #  print(parse_in(sys.argv[1:]))
+    gen = Genetika(parse_in(sys.argv[1:]))
+
