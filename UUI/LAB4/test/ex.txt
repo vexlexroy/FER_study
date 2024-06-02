@@ -1,0 +1,1 @@
+python solution.py --train ../test/sine_train.txt --test ../test/sine_test.txt --nn 5s --popsize 10 --elitism 1 --p 0.1 --K 0.1 --iter 10000
