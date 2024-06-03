@@ -3,6 +3,7 @@ import argparse
 import numpy as np
 from numpy import random
 import random as rng
+import math
 
 class NeuralNet:
     layers=None # layer : weights(np array)
@@ -13,7 +14,7 @@ class NeuralNet:
     fit:float = None
     count:str = '0'
     def __init__(self, id, architecture:str=None, inparm:int=None, outparm:int=None, existingweights:dict=None):
-        self.count=str(int(self.count)+1+id)
+        # self.count=str(int(self.count)+1+int(id))
         if (existingweights==None):
             self.layers={}
             self.arcitecture=architecture
@@ -24,12 +25,12 @@ class NeuralNet:
             # print(arc)
             for i,x in enumerate(arc[1:]):
                 # print(i, " ", x)
-                self.layers[i]=random.uniform(low=-100, high=100, size=(int(arc[i]), int(x)))
+                self.layers[i]=random.uniform(low=-1, high=1, size=(int(arc[i]), int(x)))
         else:
             self.layers=existingweights.copy()
             self.inParams=inparm
             self.outParams=outparm
-            self.count=id
+            # self.count=1
             pass
         return
     
@@ -40,7 +41,7 @@ class NeuralNet:
     
     def set_fit(self, fitnes:float):
         self.fit=fitnes
-        return
+        return fitnes
     
     def get_fit(self):
         return self.fit
@@ -96,37 +97,80 @@ class Genetika:
         return
     
     def Mutate(self, child:NeuralNet):
-        
-        pass
+        new_layers={}
+        for x in child.layers:
+            layer_matrix=np.array(child.layers[x])
+            # print(f"mut:{x} ly: ",layer_matrix)
+            for j,y in enumerate(layer_matrix):
+                for i,z in enumerate(y):
+                    hit=rng.random()
+                    if(float(self.mut_prob) <= hit):
+                        layer_matrix[j][i]=layer_matrix[j][i]+random.uniform(low=-1*float(self.noise), high=float(self.noise))
+            new_layers[x]=layer_matrix
+        child.layers=new_layers
+        return child
+
     def CrosParents(self, parent1:NeuralNet, parent2:NeuralNet):
-        
-        pass
+        id=parent1.count+parent2.count
+        inparms=parent1.inParams
+        outparams=parent1.outParams
+        child_layers={}
+        for x in parent1.layers:
+            p1_layer=np.array(parent1.layers[x])
+            p2_layer=np.array(parent2.layers[x])
+            avg=(p1_layer+p2_layer)/2
+            # print(x," : ",p1_layer, "\n||\n", p2_layer, "\n||\n", avg)
+            child_layers[x]=avg
+            # print(child_layers)
+        child=NeuralNet(id, None, inparms, outparams, child_layers)
+        # print(child)
+        return child
+    
     def NewPopulate(self):
+        self.calculateFitnes()
         self.sort_fitest()
-        new_population=self.populacija[:int(self.elitism)]
-        fit_list=[u.fit for u in self.populacija]
-        for i in range(int(self.popsize)-int(self.elitism)):
+        new_population=self.populacija[:int(self.elitism)-1]
+        fit_list=[u.get_fit()[0] for u in self.populacija]
+        # print([u.get_fit()[0] for u in self.populacija])
+        # print(fit_list)
+        for i in range(int(self.popsize)-int(self.elitism)+1):
             parent1, new_fit=self.rand_by_fit(fit_list)
             parent2, _ = self.rand_by_fit(new_fit) #fit_list ako se dopusta jedan rodielj
             child=self.CrosParents(self.populacija[parent1], self.populacija[parent2])
+            # print(child)
             mutated_child=self.Mutate(child)
+            # print(mutated_child)
             new_population.append(mutated_child)
+            # print([x.__str__() for x in new_population])
+        # print(i)
         self.populacija=new_population
         return self.populacija
     
     def trainModel(self):
-        pass
+        for i in range(int(self.iterate)+1):
+            self.NewPopulate()
+            self.calculateFitnes()
+            top_fit=self.sort_fitest()[0]
+            if(i!=0 and i%(int(self.iterate)/5)==0):
+                print(f"[Train error @{i}]: {self.average_mistake(top_fit)[0]}")
+        return
 
     def rand_by_fit(self, fit_list:list):
-        new_fit_list=fit_list
+        new_fit_list=fit_list.copy()
         max=sum(fit_list)
         picked=rng.random()
-        sum = max
-        for i,x in enumerate(fit_list[-1:]):
-            sum=sum-x
-            if(picked>=sum):
-                new_fit_list.pop(len(list)-i-1)
-                return len(list)-i-1, new_fit_list
+        sum_ = max
+        # print("picked: ", picked)
+        for i,x in enumerate(fit_list[::-1]):
+            sum_= sum_-x
+            # print(sum_)
+            if(picked>=sum_):
+                # print("found :", len(fit_list)-i-1)
+                new_fit_list.pop(len(fit_list)-i-1)
+                # print(fit_list,"\n", new_fit_list)
+                return len(fit_list)-i-1, new_fit_list
+        # print("error")
+        return None
 
     def calculateFitnes(self): # fix
         total_fit=0
@@ -146,12 +190,21 @@ class Genetika:
             # print(x," : : ",x.local_fit)
             total_fit=total_fit+x.local_fit
         for x in self.populacija:
-            # x.set_fit(x.local_fit/total_fit)
             x.set_fit(x.local_fit/total_fit)
         return
+    
+    def average_mistake(self, net:NeuralNet):
+        count=0
+        total_mistake=0
+        for i,x in enumerate(self.test_set):
+            inpt = np.array([z[i] for z in self.test_set[:-1]])
+            count+=1
+            total_mistake=abs(float(x[-1])-net.calculate_resault(inpt))
+        return total_mistake/count
+
 
     def sort_fitest(self):
-        self.populacija.sort(key=lambda entry: entry.get_fit() , reverse=True)
+        self.populacija.sort(key=lambda entry: entry.get_fit() , reverse=False)
         return self.populacija
 
 
@@ -210,6 +263,8 @@ if __name__=='__main__':
     NeuralNet.calculate_resault
     gen = Genetika(*parse_in(sys.argv[1:]))
     # print(gen.populacija[0].calculate_resault(np.array([3.469])))
-    gen.calculateFitnes()
-    print([u.fit__str() for u in gen.sort_fitest()])
+    # gen.calculateFitnes()
+    # print([u.fit__str() for u in gen.sort_fitest()])
+    gen.trainModel()
+
 
