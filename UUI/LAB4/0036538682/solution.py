@@ -1,17 +1,21 @@
 import sys
 import argparse
 import numpy as np
+from numpy import random
+import random as rng
 
 class NeuralNet:
-    layers={} # layer : weights(np array)
+    layers=None # layer : weights(np array)
     arcitecture:str
     inParams:int
     outParams:int
     local_fit:float = None
     fit:float = None
-
-    def __init__(self, architecture:str=None, inparm:int=None, outparm:int=None, existingweights:dict=None):
+    count:str = '0'
+    def __init__(self, id, architecture:str=None, inparm:int=None, outparm:int=None, existingweights:dict=None):
+        self.count=str(int(self.count)+1+id)
         if (existingweights==None):
+            self.layers={}
             self.arcitecture=architecture
             self.inParams=inparm
             self.outParams=outparm
@@ -20,16 +24,19 @@ class NeuralNet:
             # print(arc)
             for i,x in enumerate(arc[1:]):
                 # print(i, " ", x)
-                self.layers[i]=np.random.uniform(low=-10.0, high=10.0, size=(int(arc[i]), int(arc[i+1])))
+                self.layers[i]=random.uniform(low=-100, high=100, size=(int(arc[i]), int(x)))
         else:
-            self.layers=existingweights
+            self.layers=existingweights.copy()
             self.inParams=inparm
             self.outParams=outparm
+            self.count=id
             pass
         return
     
     def __str__(self):
-        return(f"NeuroNet  fit: {self.fit}")
+        return(f"NeuroNet {self.count}  fit: {self.fit}  weights: {self.layers}")
+    def fit__str(self):
+        return(f"NeuroNet {self.count}  fit: {self.fit}")
     
     def set_fit(self, fitnes:float):
         self.fit=fitnes
@@ -47,17 +54,21 @@ class NeuralNet:
             if(i<len(self.layers)-1):
                 out=self.sigmoid_finction(np.dot(out,self.layers[x]))
             else:
-                out=self.sigmoid_finction(np.dot(out,self.layers[x]))
+                out=np.dot(out,self.layers[x])
         self.fit=None
+        # print(self,"out: ",out)
         return out
     
     def local_fitnes(self, resault:np.array, test_val:np.array):
-        return np.mean((resault-test_val)**2)
+        ret=((resault-test_val)**2)
+        # print(ret)
+        return ret
         
 
 
 class Genetika:
-    populacija:list=[]
+    index=0
+    populacija:list
     train_set:list
     test_set:list
     nn:str
@@ -67,6 +78,8 @@ class Genetika:
     noise:float
     iterate:int
     def __init__(self, train_set:list, test_set:list, nn:str, pops:int, elit:int, p:float, K:float, itr:int):
+        random.seed()
+        self.populacija=[]
         self.train_set=train_set
         self.test_set=test_set
         self.nn=nn
@@ -76,43 +89,69 @@ class Genetika:
         self.noise=K
         self.iterate=itr
         for i in range(int(self.popsize)):
-            self.populacija.append(NeuralNet(nn,len(train_set)-1,1))
-            # print(self.populacija)
+            x = NeuralNet(i,nn,len(train_set)-1,1)
+            # print(x)
+            self.populacija.append(x)
+            # print("populacija :: ",[z.__str__() for z in self.populacija])
         return
     
-    def Mutate(self):
-        # pick random num and add in range (K,-K)
-        # gusian noise?
+    def Mutate(self, child:NeuralNet):
+        
         pass
-    def CrosParents(self):
-        # generate children
-        # mutate children
-        # return child
+    def CrosParents(self, parent1:NeuralNet, parent2:NeuralNet):
+        
         pass
     def NewPopulate(self):
-        new_population={}
+        self.sort_fitest()
+        new_population=self.populacija[:int(self.elitism)]
+        fit_list=[u.fit for u in self.populacija]
+        for i in range(int(self.popsize)-int(self.elitism)):
+            parent1, new_fit=self.rand_by_fit(fit_list)
+            parent2, _ = self.rand_by_fit(new_fit) #fit_list ako se dopusta jedan rodielj
+            child=self.CrosParents(self.populacija[parent1], self.populacija[parent2])
+            mutated_child=self.Mutate(child)
+            new_population.append(mutated_child)
+        self.populacija=new_population
+        return self.populacija
+    
+    def trainModel(self):
         pass
+
+    def rand_by_fit(self, fit_list:list):
+        new_fit_list=fit_list
+        max=sum(fit_list)
+        picked=rng.random()
+        sum = max
+        for i,x in enumerate(fit_list[-1:]):
+            sum=sum-x
+            if(picked>=sum):
+                new_fit_list.pop(len(list)-i-1)
+                return len(list)-i-1, new_fit_list
 
     def calculateFitnes(self): # fix
         total_fit=0
         for x in self.populacija:
+            # print(x)
             x:NeuralNet
             avg_fit=0
             count=0
             for i,y in enumerate(self.train_set[-1]):
                 inpt = np.array([z[i] for z in self.train_set[:-1]])
-                print(x.calculate_resault(inpt), "  ",y)
+                # print(x.calculate_resault(inpt), "  ",y)
                 local_fit=x.local_fitnes(x.calculate_resault(inpt), y)
+                # print("local_fits: ",local_fit," ",)
                 avg_fit=avg_fit+local_fit
                 count=i+1
             x.local_fit=avg_fit/count
+            # print(x," : : ",x.local_fit)
             total_fit=total_fit+x.local_fit
         for x in self.populacija:
+            # x.set_fit(x.local_fit/total_fit)
             x.set_fit(x.local_fit/total_fit)
         return
 
     def sort_fitest(self):
-        self.populacija.sort(key=lambda entry: entry.get_fit())
+        self.populacija.sort(key=lambda entry: entry.get_fit() , reverse=True)
         return self.populacija
 
 
@@ -170,8 +209,7 @@ if __name__=='__main__':
     #  print(parse_in(sys.argv[1:]))
     NeuralNet.calculate_resault
     gen = Genetika(*parse_in(sys.argv[1:]))
-    # print(gen.populacija[0].layers)
     # print(gen.populacija[0].calculate_resault(np.array([3.469])))
     gen.calculateFitnes()
-    print([u.fit for u in gen.sort_fitest()])
+    print([u.fit__str() for u in gen.sort_fitest()])
 
