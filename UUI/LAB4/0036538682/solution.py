@@ -61,7 +61,7 @@ class NeuralNet:
         return out
     
     def local_fitnes(self, resault:np.array, test_val:np.array):
-        ret=((resault-test_val)**2)
+        ret=((resault-test_val)**2)[0]
         # print(ret)
         return ret
         
@@ -130,7 +130,7 @@ class Genetika:
         self.calculateFitnes()
         self.sort_fitest()
         new_population=self.populacija[:int(self.elitism)-1]
-        fit_list=[u.get_fit()[0] for u in self.populacija]
+        fit_list=[u.get_fit() for u in self.populacija]
         # print([u.get_fit()[0] for u in self.populacija])
         # print(fit_list)
         for i in range(int(self.popsize)-int(self.elitism)+1):
@@ -158,7 +158,7 @@ class Genetika:
     def rand_by_fit(self, fit_list:list):
         new_fit_list=fit_list.copy()
         max=sum(fit_list)
-        picked=rng.random()
+        picked=rng.random()*max
         sum_ = max
         # print("picked: ", picked)
         for i,x in enumerate(fit_list[::-1]):
@@ -187,10 +187,14 @@ class Genetika:
                 avg_fit=avg_fit+local_fit
                 count=i+1
             x.local_fit=avg_fit/count
-            # print(x," : : ",x.local_fit)
+            print(x.count," : : ",x.local_fit)
             total_fit=total_fit+x.local_fit
+        rel_sum=0
         for x in self.populacija:
+            print(f"loc: {x.local_fit} , tot: {total_fit} , rel: {x.local_fit/total_fit}")
+            rel_sum=rel_sum+x.local_fit/total_fit
             x.set_fit(x.local_fit/total_fit)
+        print(f"full: {rel_sum}")
         return
     
     def average_mistake(self, net:NeuralNet):
@@ -199,12 +203,12 @@ class Genetika:
         for i,x in enumerate(self.test_set):
             inpt = np.array([z[i] for z in self.test_set[:-1]])
             count+=1
-            total_mistake=abs(float(x[-1])-net.calculate_resault(inpt))
+            total_mistake=total_mistake+abs(float(x[-1])-net.calculate_resault(inpt))
         return total_mistake/count
 
 
     def sort_fitest(self):
-        self.populacija.sort(key=lambda entry: entry.get_fit() , reverse=False)
+        self.populacija.sort(key=lambda entry: entry.get_fit() , reverse=True)
         return self.populacija
 
 
