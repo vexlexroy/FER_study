@@ -61,11 +61,25 @@ class NeuralNet:
         return out
     
     def local_fitnes(self, resault:np.array, test_val:np.array):
-        ret=((test_val-resault)**2)
+        ret=((resault-test_val)**2)
         # print(ret)
         return ret
+    
+    def calculate_multiple(self, input:np.array):
+        out=np.array([])
+        for x in input:
+            rez=self.calculate_resault(x)
+            out=np.append(rez)
+        return out
+    
+    def average_error(self, resault:np.array, expect:np.array):
+        return np.mean(np.square(expect-resault))
+
+        
+
 
 class Genetika:
+    index=0
     populacija:list
     train_set:list
     test_set:list
@@ -157,7 +171,7 @@ class Genetika:
         self.calculateFitnes()
         top_fit=self.sort_fitest()[0]
         print(f"[Test error]: {self.average_mistake_test(top_fit)}")
-        return top_fit
+        return
 
     def rand_by_fit(self, fit_list:list):
         new_fit_list=fit_list.copy()
@@ -276,11 +290,11 @@ def parse_in(args):
 if __name__=='__main__':
     #  print("start")
     #  print(parse_in(sys.argv[1:]))
+    NeuralNet.calculate_resault
     gen = Genetika(*parse_in(sys.argv[1:]))
     # print(gen.populacija[0].calculate_resault(np.array([3.469])))
     # gen.calculateFitnes()
     # print([u.fit__str() for u in gen.sort_fitest()])
-    model:NeuralNet=gen.trainModel()
-    print([(model.calculate_resault(np.array([z[i] for z in gen.train_set[:-1]])),gen.train_set[-1][i]) for i in range(len(gen.train_set[0]))])
+    gen.trainModel()
 
 
