@@ -32,7 +32,6 @@ class NeuralNet:
             self.inParams=inparm
             self.outParams=outparm
             self.count=id
-            pass
         return
     
     def __str__(self):
@@ -107,8 +106,8 @@ class Genetika:
         for x in child.layers:
             layer_matrix=np.array(child.layers[x])
             # print(f"mut:{x} ly: ",layer_matrix)
-            for j,y in enumerate(layer_matrix):
-                for i,z in enumerate(y):
+            for j in range(len(layer_matrix)):
+                for i in range(len(layer_matrix[j])):
                     hit=rng.random()
                     if(float(self.mut_prob) <= hit):
                         layer_matrix[j][i]=layer_matrix[j][i]+random.normal(loc=0.0, scale=float(self.noise))
@@ -120,14 +119,7 @@ class Genetika:
         id=parent1.count*10+parent2.count
         inparms=parent1.inParams
         outparams=parent1.outParams
-        child_layers={}
-        for x in parent1.layers:
-            p1_layer=np.array(parent1.layers[x])
-            p2_layer=np.array(parent2.layers[x])
-            avg=(p1_layer+p2_layer)/2
-            # print(x," : ",p1_layer, "\n||\n", p2_layer, "\n||\n", avg)
-            child_layers[x]=avg
-            # print(child_layers)
+        child_layers = {x: (parent1.layers[x] + parent2.layers[x]) / 2 for x in parent1.layers}
         child=NeuralNet(id, None, inparms, outparams, child_layers)
         # print(child)
         return child
@@ -143,7 +135,7 @@ class Genetika:
         # print([u.get_fit()[0] for u in self.populacija])
         # print(fit_list)
         for i in range(int(self.popsize)-int(self.elitism)+1):
-            parent1, new_fit=self.rand_by_fit(fit_list)
+            parent1, _=self.rand_by_fit(fit_list)
             parent2, _ = self.rand_by_fit(fit_list) #fit_list ako se dopusta jedan rodielj
             child=self.CrosParents(self.populacija[parent1], self.populacija[parent2])
             # print(child)
@@ -162,14 +154,14 @@ class Genetika:
             self.calculateFitnes()
             if(i!=0 and i%(int(self.iterate)/5)==0):
                 top_fit=self.sort_fitest()[0]
-                print(f"[Train error @{i}]: {self.average_mistake_train(top_fit)}")
+                print(f"[Train error @{i}]: {self.average_mistake_train(top_fit)[0]}")
         self.calculateFitnes()
         top_fit=self.sort_fitest()[0]
-        print(f"[Test error]: {self.average_mistake_test(top_fit)}")
+        print(f"[Test error]: {self.average_mistake_test(top_fit)[0]}")
         return top_fit
 
     def rand_by_fit(self, fit_list:list): # odabire nasumice index nekog neural neta po fitU
-        new_fit_list=fit_list.copy()
+        # new_fit_list=fit_list.copy()
         max=sum(fit_list)
         picked=rng.random()*max
         sum_ = max
@@ -180,9 +172,9 @@ class Genetika:
             # print(sum_)
             if(picked>=sum_):
                 # print("found :", len(fit_list)-i-1)
-                new_fit_list.pop(len(fit_list)-i-1)
+                # new_fit_list.pop(len(fit_list)-i-1)
                 # print(fit_list,"\n", new_fit_list)
-                return len(fit_list)-i-1, new_fit_list
+                return len(fit_list)-i-1, fit_list#new_fit_list
         # print("error")
         return None
 
@@ -194,13 +186,12 @@ class Genetika:
             x.mse=self.average_mistake_train(x)
             # print(x.count," : : ",x.mse)
             total_fit=total_fit+x.mse
-        rel_sum=0
+        # rel_sum=0
         for x in self.populacija:
             # print(f"loc: {x.mse} , tot: {total_fit} , rel: {1/(x.mse/total_fit)}")
-            relative_fit=x.mse/total_fit
-            x.set_fit(1/relative_fit)
+            x.set_fit(total_fit/x.mse)
             # x.set_fit(1/(1+(x.mse/total_fit)))
-            rel_sum+=x.get_fit()
+            # rel_sum+=x.get_fit()
         # print(f"full: {rel_sum}")
         return
     
