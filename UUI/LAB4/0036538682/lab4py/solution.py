@@ -26,7 +26,7 @@ class NeuralNet:
             # print(arc)
             for i,x in enumerate(arc[1:]):
                 # print(i, " ", x)
-                self.layers[i]=random.uniform(low=-standard_dev, high=standard_dev, size=(int(arc[i]), int(x)))
+                self.layers[i]=random.uniform(low=-standard_dev, high=standard_dev, size=(int(arc[i])+1, int(x))) # ekstra red za bias
         else:
             self.layers=existingweights.copy()
             self.inParams=inparm
@@ -51,8 +51,15 @@ class NeuralNet:
         return 1/(1 + np.exp(-xexp))
     
     def calculate_resault(self, input:np.array):
-        out=input
+        out:np.array=input
         for i,x in enumerate(self.layers):
+            # print(out)
+            # print("++++++++++++++++++++++++++++++++++++++++++")
+            if out.ndim == 1:  # ako je 1d dodati dimenziju
+                out = out.reshape(-1, 1)
+            ones = np.ones((out.shape[0], 1), dtype=float)  
+            out = np.hstack((out, ones))  # dodaje stupac jedinica
+            # print(out)
             if(i<len(self.layers)-1):
                 out=self.sigmoid_finction(np.dot(out,self.layers[x]))
             else:
@@ -279,6 +286,7 @@ if __name__=='__main__':
     #  print("start")
     #  print(parse_in(sys.argv[1:]))
     gen = Genetika(*parse_in(sys.argv[1:]))
+    # print(str(gen.populacija[0].__str__()))
     # print(gen.populacija[0].calculate_resault(np.array([3.469])))
     # gen.calculateFitnes()
     # print([u.fit__str() for u in gen.sort_fitest()])
