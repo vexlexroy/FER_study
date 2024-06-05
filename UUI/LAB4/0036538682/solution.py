@@ -10,9 +10,9 @@ class NeuralNet:
     arcitecture:str
     inParams:int
     outParams:int
-    local_fit:float = None
+    mse:float = None
     fit:float = None
-    count:str = '0'
+    count:float = 0.001
     def __init__(self, id, architecture:str=None, inparm:int=None, outparm:int=None, existingweights:dict=None, standard_dev=None):
         # self.count=str(int(self.count)+1+int(id))
         if (existingweights==None):
@@ -20,6 +20,7 @@ class NeuralNet:
             self.arcitecture=architecture
             self.inParams=inparm
             self.outParams=outparm
+            self.count=id
             arc=(str(self.inParams)+'s'+architecture+str(self.outParams)).split('s')
             # print(architecture.split("s"))
             # print(arc)
@@ -30,12 +31,12 @@ class NeuralNet:
             self.layers=existingweights.copy()
             self.inParams=inparm
             self.outParams=outparm
-            # self.count=1
+            self.count=id
             pass
         return
     
     def __str__(self):
-        return(f"NeuroNet {self.count}  fit: {self.fit}  weights: {self.layers}")
+        return(f"NeuroNet:{self.count}  fit:{self.fit}  weights:",self.layers)
     def fit__str(self):
         return(f"NeuroNet {self.count}  fit: {self.fit}")
     
@@ -87,7 +88,7 @@ class Genetika:
         self.noise=K
         self.iterate=itr
         for i in range(int(self.popsize)):
-            x = NeuralNet(i,nn,len(train_set)-1,1, standard_dev=float(self.noise))
+            x = NeuralNet(i*0.001,nn,len(train_set)-1,1, standard_dev=float(self.noise))
             # print(x)
             self.populacija.append(x)
             # print("populacija :: ",[z.__str__() for z in self.populacija])
@@ -108,7 +109,7 @@ class Genetika:
         return child
 
     def CrosParents(self, parent1:NeuralNet, parent2:NeuralNet):
-        id=parent1.count+parent2.count
+        id=parent1.count*10+parent2.count
         inparms=parent1.inParams
         outparams=parent1.outParams
         child_layers={}
@@ -182,43 +183,44 @@ class Genetika:
         for x in self.populacija:
             # print(x)
             x:NeuralNet
-            avg_fit=0
-            count=0
-            x.local_fit=self.average_mistake_train(x)
-            # print(x.count," : : ",x.local_fit)
-            total_fit=total_fit+x.local_fit
+            x.mse=self.average_mistake_train(x)
+            # print(x.count," : : ",x.mse)
+            total_fit=total_fit+x.mse
         rel_sum=0
         for x in self.populacija:
-            # print(f"loc: {x.local_fit} , tot: {total_fit} , rel: {1/(x.local_fit/total_fit)}")
-            # rel_sum=(1/(1+(x.local_fit/total_fit)))
-            x.set_fit(1/(x.local_fit/total_fit))
-            # x.set_fit(1/(1+(x.local_fit/total_fit)))
+            # print(f"loc: {x.mse} , tot: {total_fit} , rel: {1/(x.mse/total_fit)}")
+            relative_fit=x.mse/total_fit
+            x.set_fit(1/relative_fit)
+            # x.set_fit(1/(1+(x.mse/total_fit)))
+            rel_sum+=x.get_fit()
         # print(f"full: {rel_sum}")
         return
     
     def average_mistake_train(self, net:NeuralNet):
         total_fit=0
         count=0
-        for i,x in enumerate(self.train_set):
+        for i,x in enumerate(self.train_set[-1]):
             inpt = np.array([z[i] for z in self.train_set[:-1]])
-            # print(f"in:{inpt} , out: {x[-1]}, calculated: {net.calculate_resault(inpt)[0]}")
+            # print(f"in:{inpt} , out: {x}, calculated: {net.calculate_resault(inpt)[0]}")
             count+=1
-            total_fit=total_fit+net.local_fitnes(net.calculate_resault(inpt)[0], x[-1])
-        average_fit=(total_fit/(count+1))
+            total_fit=total_fit+net.local_fitnes(net.calculate_resault(inpt)[0], x)
+        average_fit=(total_fit/(count))
         return average_fit
 
     def average_mistake_test(self, net:NeuralNet):
         total_fit=0
         count=0
-        for i,x in enumerate(self.test_set):
+        for i,x in enumerate(self.test_set[-1]):
             inpt = np.array([z[i] for z in self.test_set[:-1]])
+            # print(f"in:{inpt} , out: {x}, calculated: {net.calculate_resault(inpt)[0]}")
             count+=1
-            total_fit=total_fit+net.local_fitnes(net.calculate_resault(inpt)[0], x[-1])
+            total_fit=total_fit+net.local_fitnes(net.calculate_resault(inpt)[0], x)
         average_fit=(total_fit/(count+1))
         return average_fit
 
     def sort_fitest(self):
         self.populacija.sort(key=lambda entry: entry.get_fit() , reverse=True)
+        # print([x.__str__() for x in self.populacija])
         return self.populacija
 
 
@@ -281,6 +283,6 @@ if __name__=='__main__':
     # gen.calculateFitnes()
     # print([u.fit__str() for u in gen.sort_fitest()])
     model:NeuralNet=gen.trainModel()
-    print([(model.calculate_resault(np.array([z[i] for z in gen.train_set[:-1]])),gen.train_set[-1][i]) for i in range(len(gen.train_set[0]))])
+    print([(model.calculate_resault(np.array([z[i] for z in gen.train_set[:-1]]))[0],gen.train_set[-1][i]) for i in range(len(gen.train_set[0]))])
 
 
