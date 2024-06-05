@@ -1,2 +1,7 @@
-python solution.py --train ../test/sine_train.txt --test ../test/sine_test.txt --nn 5s --popsize 10 --elitism 1 --p 0.1 --K 0.1 --iter 10000
-python solution.py --train ../test/rastrigin_train.txt --test ../test/rastrigin_test.txt --nn 5s --popsize 10 --elitism 1 --p 0.3 --K 0.5 --iter 10000
+python solution.py --train ../../test/sine_train.txt --test ../../test/sine_test.txt --nn 5s --popsize 10 --elitism 1 --p 0.1 --K 0.1 --iter 10000
+python solution.py --train ../../test/sine_train.txt --test ../../test/sine_test.txt --nn 20s --popsize 20 --elitism 1 --p 0.7 --K 0.1 --iter 10000
+python solution.py --train ../../test/rastrigin_train.txt --test ../../test/rastrigin_test.txt --nn 5s --popsize 10 --elitism 1 --p 0.3 --K 0.5 --iter 10000
+python solution.py --train ../../test/rastrigin_train.txt --test ../../test/rastrigin_test.txt --nn 20s --popsize 20 --elitism 1 --p 0.1 --K 0.5 --iter 10000
+python solution.py --train ../../test/rosenbrock_train.txt --test ../../test/rosenbrock_test.txt --nn 5s --popsize 10 --elitism 1 --p 0.5 --K 4. --iter 10000
+
+

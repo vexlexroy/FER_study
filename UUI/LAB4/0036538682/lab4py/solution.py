@@ -205,13 +205,11 @@ class Genetika:
     
     def average_mistake_train(self, net:NeuralNet):# racuna mse za train set
         total_fit=0
-        count=0
         for i,x in enumerate(self.train_set[-1]):
             inpt = np.array([z[i] for z in self.train_set[:-1]])
             # print(f"in:{inpt} , out: {x}, calculated: {net.calculate_resault(inpt)[0]}")
-            count+=1
             total_fit=total_fit+net.local_fitnes(net.calculate_resault(inpt)[0], x)
-        average_fit=(total_fit/(count))
+        average_fit=(total_fit/i)
         return average_fit
 
     def average_mistake_test(self, net:NeuralNet):# racuna mse za test set
