@@ -56,7 +56,8 @@ class NeuralNet:
             # print(out)
             # print("++++++++++++++++++++++++++++++++++++++++++")
             if out.ndim == 1:  # ako je 1d dodati dimenziju
-                out = out.reshape(-1, 1)
+                out = out.reshape(1, -1)
+            # print(out)
             ones = np.ones((out.shape[0], 1), dtype=float)  
             out = np.hstack((out, ones))  # dodaje stupac jedinica
             # print(out)
