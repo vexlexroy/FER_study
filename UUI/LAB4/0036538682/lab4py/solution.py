@@ -57,9 +57,12 @@ class NeuralNet:
             if out.ndim == 1:  # ako je 1d dodati dimenziju
                 out = out.reshape(1, -1)
             # print(out)
+            # print("------------------------------------------")
             ones = np.ones((out.shape[0], 1), dtype=float)  
             out = np.hstack((out, ones))  # dodaje stupac jedinica
             # print(out)
+            # print("__________________________________________")
+            # print(f"{out} X {self.layers[x]}")
             if(i<len(self.layers)-1):
                 out=self.sigmoid_finction(np.dot(out,self.layers[x]))
             else:
@@ -99,6 +102,7 @@ class Genetika:
             # print(x)
             self.populacija.append(x)
             # print("populacija :: ",[z.__str__() for z in self.populacija])
+        self.populacija[0].mse=self.average_mistake_train(self.populacija[0])
         return
     
     def Mutate(self, child:NeuralNet): # prolazi sve clanove u matrici tezina i mutira
@@ -116,7 +120,7 @@ class Genetika:
         return child
 
     def CrosParents(self, parent1:NeuralNet, parent2:NeuralNet): # izabire dva roditelja i radi srednje vrijednosti tezina slojeva
-        id=parent1.count*10+parent2.count
+        id=0#parent1.count*10+parent2.count
         inparms=parent1.inParams
         outparams=parent1.outParams
         child_layers = {x: (parent1.layers[x] + parent2.layers[x]) / 2 for x in parent1.layers}
@@ -126,17 +130,15 @@ class Genetika:
     
     def NewPopulate(self): # odvaja elite i radi dijecu do pop size
         self.calculateFitnes()
-        self.sort_fitest()
-        if(self.elitism!=0):
-            new_population=self.populacija[:max(0, int(self.elitism)-1)]
-        else:
-            new_population=[]
+        new_population=self.populacija[:max(0, int(self.elitism))]
+        # print(new_population)
         fit_list=[u.get_fit() for u in self.populacija]
         # print([u.get_fit()[0] for u in self.populacija])
         # print(fit_list)
+        # print(int(self.popsize)-int(self.elitism))
         for i in range(int(self.popsize)-int(self.elitism)+1):
-            parent1, _=self.rand_by_fit(fit_list)
-            parent2, _ = self.rand_by_fit(fit_list) #fit_list ako se dopusta jedan rodielj
+            parent1, n_list=self.rand_by_fit(fit_list)
+            parent2, _ = self.rand_by_fit(n_list) #fit_list ako se dopusta jedan rodielj
             child=self.CrosParents(self.populacija[parent1], self.populacija[parent2])
             # print(child)
             mutated_child=self.Mutate(child)
@@ -153,10 +155,9 @@ class Genetika:
             self.NewPopulate()
             self.calculateFitnes()
             if(i!=0 and i%(int(self.iterate)/5)==0):
-                top_fit=self.sort_fitest()[0]
+                top_fit=self.populacija[0]
                 print(f"[Train error @{i}]: {self.average_mistake_train(top_fit)[0]}")
-        self.calculateFitnes()
-        top_fit=self.sort_fitest()[0]
+        top_fit=self.populacija[0]
         print(f"[Test error]: {self.average_mistake_test(top_fit)[0]}")
         return top_fit
 
@@ -179,8 +180,8 @@ class Genetika:
         return None
 
     def calculateFitnes(self): # racuna mse za svaki i dijeli s totalnim , te koristi 1/relativ_mse
-        total_fit=0
-        for x in self.populacija:
+        total_fit=sum([x.mse for x in self.populacija[:int(self.elitism)]])
+        for x in self.populacija[int(self.elitism):]:
             # print(x)
             x:NeuralNet
             x.mse=self.average_mistake_train(x)
@@ -193,6 +194,7 @@ class Genetika:
             # x.set_fit(1/(1+(x.mse/total_fit)))
             # rel_sum+=x.get_fit()
         # print(f"full: {rel_sum}")
+        self.sort_fitest()
         return
     
     def average_mistake_train(self, net:NeuralNet):# racuna mse za train set
@@ -210,15 +212,14 @@ class Genetika:
         for i,x in enumerate(self.test_set[-1]):
             inpt = np.array([z[i] for z in self.test_set[:-1]])
             # print(f"in:{inpt} , out: {x}, calculated: {net.calculate_resault(inpt)[0]}")
-            count+=1
             total_fit=total_fit+net.local_fitnes(net.calculate_resault(inpt)[0], x)
-        average_fit=(total_fit/(count+1))
+        average_fit=(total_fit/i)
         return average_fit
 
     def sort_fitest(self): # sortira po fitnesu
         self.populacija.sort(key=lambda entry: entry.get_fit() , reverse=True)
         # print([x.__str__() for x in self.populacija])
-        return self.populacija
+        return
 
 
 
