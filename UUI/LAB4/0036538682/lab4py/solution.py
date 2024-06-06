@@ -26,7 +26,7 @@ class NeuralNet:
             # print(arc)
             for i,x in enumerate(arc[1:]):
                 # print(i, " ", x)
-                self.layers[i]=random.uniform(low=-standard_dev, high=standard_dev, size=(int(arc[i])+1, int(x))) # ekstra red za bias
+                self.layers[i]=random.normal(loc=0.0, scale=0.01, size=(int(arc[i])+1, int(x))) # ekstra red za bias
         else:
             self.layers=existingweights.copy()
             self.inParams=inparm
@@ -72,7 +72,7 @@ class NeuralNet:
         return out
     
     def local_fitnes(self, resault:np.array, test_val:np.array):
-        ret=((test_val-resault)**2)
+        ret=np.mean(np.square(test_val-resault))
         # print(ret)
         return ret
 
@@ -97,12 +97,24 @@ class Genetika:
         self.mut_prob=p
         self.noise=K
         self.iterate=itr
+
+        ful_train=np.array(train_set)
+        ful_train=np.transpose(ful_train)
+        self.inpt=ful_train[:, :-1]
+        self.outpt=np.reshape(ful_train[:, -1], (len(ful_train[:, -1]),1))
+
+        ful_train=np.array(test_set)
+        ful_train=np.transpose(ful_train)
+        self.inpt_t=ful_train[:, :-1]
+        self.outpt_t=np.reshape(ful_train[:, -1], (len(ful_train[:, -1]),1))
+
         for i in range(int(self.popsize)):
             x = NeuralNet(i*0.001,nn,len(train_set)-1,1, standard_dev=float(self.noise))
             # print(x)
             self.populacija.append(x)
             # print("populacija :: ",[z.__str__() for z in self.populacija])
         self.populacija[0].mse=self.average_mistake_train(self.populacija[0])
+        
         return
     
     def Mutate(self, child:NeuralNet): # prolazi sve clanove u matrici tezina i mutira
@@ -156,9 +168,9 @@ class Genetika:
             self.calculateFitnes()
             if(i!=0 and i%(int(self.iterate)/5)==0):
                 top_fit=self.populacija[0]
-                print(f"[Train error @{i}]: {self.average_mistake_train(top_fit)[0]}")
+                print(f"[Train error @{i}]: {self.average_mistake_train(top_fit)}")
         top_fit=self.populacija[0]
-        print(f"[Test error]: {self.average_mistake_test(top_fit)[0]}")
+        print(f"[Test error]: {self.average_mistake_test(top_fit)}")
         return top_fit
 
     def rand_by_fit(self, fit_list:list): # odabire nasumice index nekog neural neta po fitU
@@ -198,23 +210,25 @@ class Genetika:
         return
     
     def average_mistake_train(self, net:NeuralNet):# racuna mse za train set
-        total_fit=0
-        for i,x in enumerate(self.train_set[-1]):
-            inpt = np.array([z[i] for z in self.train_set[:-1]])
-            # print(f"in:{inpt} , out: {x}, calculated: {net.calculate_resault(inpt)[0]}")
-            total_fit=total_fit+net.local_fitnes(net.calculate_resault(inpt)[0], x)
-        average_fit=(total_fit/i)
-        return average_fit
+        return net.local_fitnes(net.calculate_resault(self.inpt), self.outpt)
+        # total_fit=0
+        # for i,x in enumerate(self.train_set[-1]):
+        #     inpt = np.array([z[i] for z in self.train_set[:-1]])
+        #     # print(f"in:{inpt} , out: {x}, calculated: {net.calculate_resault(inpt)[0]}")
+        #     total_fit=total_fit+net.local_fitnes(net.calculate_resault(inpt)[0], x)
+        # average_fit=(total_fit/i)
+        # return average_fit
 
     def average_mistake_test(self, net:NeuralNet):# racuna mse za test set
-        total_fit=0
-        count=0
-        for i,x in enumerate(self.test_set[-1]):
-            inpt = np.array([z[i] for z in self.test_set[:-1]])
-            # print(f"in:{inpt} , out: {x}, calculated: {net.calculate_resault(inpt)[0]}")
-            total_fit=total_fit+net.local_fitnes(net.calculate_resault(inpt)[0], x)
-        average_fit=(total_fit/i)
-        return average_fit
+        return net.local_fitnes(net.calculate_resault(self.inpt_t), self.outpt_t)
+        # total_fit=0
+        # count=0
+        # for i,x in enumerate(self.test_set[-1]):
+        #     inpt = np.array([z[i] for z in self.test_set[:-1]])
+        #     # print(f"in:{inpt} , out: {x}, calculated: {net.calculate_resault(inpt)[0]}")
+        #     total_fit=total_fit+net.local_fitnes(net.calculate_resault(inpt)[0], x)
+        # average_fit=(total_fit/i)
+        # return average_fit
 
     def sort_fitest(self): # sortira po fitnesu
         self.populacija.sort(key=lambda entry: entry.get_fit() , reverse=True)
