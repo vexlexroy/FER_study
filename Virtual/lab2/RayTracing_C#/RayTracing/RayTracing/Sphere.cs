@@ -54,7 +54,12 @@ namespace raytracing
         /// <returns>normal vektor normale</returns>
         public override Vector getNormal ( Point point )
         {
-            return null;
+            x = point.getX;
+            y = point.getY;
+            z = point.getZ; 
+            l = 
+            N = ( (x-l)/r , (y-m)/r , (z-n)/r )
+            return N;
         }
     }
 }

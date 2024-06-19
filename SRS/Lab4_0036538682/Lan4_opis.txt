@@ -1,0 +1,20 @@
+"Udaljena" provjera dostupnosti usluga
+	1. Što se vidi u Wiresharku? (Možete koristiti "Follow TCP stream")
+		Vidi se pokusaj spajanja te korisnicko ime i lozinka s kojom je pokusano
+		Kod ssh se nevide podatci
+	2. Skeniranje rade:
+		Skeneri:
+			10.26.163.192 - TCP napadac
+			10.26.163.1 - UDP napadac
+		Zrtve:
+			10.26.163.236 - TCP/UDP zrtva
+		Otvoreni portovi:
+			443
+			80
+			22
+		Zatvoreni portovi:
+			8080
+			25
+			53
+			23
+			21
