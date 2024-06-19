@@ -44,7 +44,27 @@ public class Sphere extends Object{
    * @return logicku vrijednost postojanja presjeka zrake s kuglom
    */
   public boolean intersection(Ray ray) {
-    return false;
+    Vector direction = ray.getDirection();
+    Point origin = ray.getStartingPoint();
+    Vector ray_to_cent =  new Vector(origin, this.centerPosition);
+    double angle = Math.acos(direction.dotProduct(ray_to_cent)/(direction.getLength()*ray_to_cent.getLength()));
+    if(angle >= Math.PI/2 ||  angle <= -Math.PI/2){
+      return false;
+    }
+    else{
+      double d = ray_to_cent.getLength()*Math.sin(angle);
+      double midLen = Math.sqrt(Math.pow(ray_to_cent.getLength(),2)-Math.pow(d,2));
+      double lenBlizi = midLen - Math.sqrt(Math.pow(radius,2)-Math.pow(d,2));
+
+      if(lenBlizi <= Epsilon){
+        lenBlizi = midLen + Math.sqrt(Math.pow(radius,2)-Math.pow(d,2));
+      }
+      double x = origin.getX() + d * ray.direction.getX();
+      double y = origin.getY() + d * ray.direction.getY();
+      double z = origin.getZ() + d * ray.direction.getZ();
+      IntersectionPoint = new Point(x,y,z);
+      return true;
+    }
   }
 
   /**
@@ -63,7 +83,14 @@ public class Sphere extends Object{
 	* @return normal vektor normale
 	*/
   public Vector getNormal(Point point) {
-	return null;
+    double x = point.getX();
+      double y = point.getY();
+      double z = point.getZ();
+      double l = this.centerPosition.getX();
+      double m = this.centerPosition.getY();
+      double n = this.centerPosition.getZ();
+      Vector N = new Vector( (x-l)/this.radius , (y-m)/this.radius , (z-n)/this.radius );
+      return N;
   }
 
 

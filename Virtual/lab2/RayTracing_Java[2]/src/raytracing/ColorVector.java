@@ -104,9 +104,10 @@ public class ColorVector {
    * zaokruzuju na najvisu, odnosno najmanju.
    */
 
-    public void correct(){
-
-
+  public void correct(){
+    red = Math.max(0, Math.min(1, red));
+    green = Math.max(0, Math.min(1, green));
+    blue = Math.max(0, Math.min(1, blue));
   }
 
 }
